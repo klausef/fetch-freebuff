@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240" role="img" aria-label="A Fetch rider on a scooter waving hello">
+  <title>A Fetch rider waving hello</title>
+  <!--
+    Slide 1 — "Welcome to Fetch!".
+
+    One illustration per welcome slide, drawn in the crest palette (red field,
+    gold ring, black rim, blue helmet) so the carousel window reads as part of
+    the brand rather than as stock art. The royal-blue field matches
+    `bg-fetch-royal` on the window behind it, so the artwork sits edge to edge
+    under `object-cover` with no visible seam.
+  -->
+  <defs>
+    <linearGradient id="s1-field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33419a" />
+      <stop offset="1" stop-color="#222b70" />
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="240" fill="url(#s1-field)" />
+  <circle cx="216" cy="126" r="120" fill="#3f4dab" opacity="0.45" />
+
+  <!-- Sparkles -->
+  <path d="M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z" transform="translate(54 54) scale(0.9)" fill="#f4f4f7" opacity="0.9" />
+  <path d="M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z" transform="translate(348 62) scale(1.05)" fill="#ffc72c" />
+  <path d="M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z" transform="translate(322 158) scale(0.55)" fill="#f4f4f7" opacity="0.75" />
+
+  <!-- Ground -->
+  <ellipse cx="204" cy="205" rx="150" ry="13" fill="#151b52" opacity="0.55" />
+
+  <!-- Scooter -->
+  <circle cx="126" cy="176" r="26" fill="#0f1440" />
+  <circle cx="126" cy="176" r="13" fill="#f4f4f7" />
+  <circle cx="126" cy="176" r="5" fill="#0f1440" />
+  <circle cx="276" cy="176" r="26" fill="#0f1440" />
+  <circle cx="276" cy="176" r="13" fill="#f4f4f7" />
+  <circle cx="276" cy="176" r="5" fill="#0f1440" />
+  <rect x="140" y="160" width="112" height="15" rx="7" fill="#ffc72c" />
+  <path d="M252 167 L272 174" fill="none" stroke="#ffc72c" stroke-width="13" stroke-linecap="round" />
+  <path d="M270 165 L262 118" fill="none" stroke="#e1251b" stroke-width="12" stroke-linecap="round" />
+  <path d="M244 114 L286 114" fill="none" stroke="#14141a" stroke-width="11" stroke-linecap="round" />
+  <circle cx="284" cy="134" r="9" fill="#ffc72c" />
+
+  <!-- Cargo box on the back -->
+  <rect x="96" y="126" width="46" height="34" rx="6" fill="#ffc72c" />
+  <rect x="115" y="126" width="8" height="34" fill="#e3a715" />
+  <rect x="104" y="138" width="18" height="12" rx="3" fill="#e1251b" />
+
+  <!-- Rider -->
+  <path d="M196 160 C188 128, 198 104, 220 100 L238 110 C246 126, 242 148, 232 160 Z" fill="#f4f4f7" />
+  <path d="M204 132 L232 132" fill="none" stroke="#e1251b" stroke-width="7" stroke-linecap="round" />
+  <!-- Waving arm -->
+  <path d="M214 112 C202 98, 196 80, 200 62" fill="none" stroke="#f4f4f7" stroke-width="15" stroke-linecap="round" />
+  <circle cx="201" cy="55" r="11" fill="#f4f4f7" />
+  <path d="M195 46 L195 38 M201 45 L201 37 M207 46 L207 38" fill="none" stroke="#f4f4f7" stroke-width="4" stroke-linecap="round" />
+  <!-- Helmet -->
+  <circle cx="230" cy="80" r="27" fill="#e1251b" />
+  <path d="M206 78 A26 26 0 0 1 252 74" fill="none" stroke="#ffc72c" stroke-width="7" stroke-linecap="round" />
+  <path d="M208 84 L252 84 L248 100 Q230 106 212 100 Z" fill="#14141a" />
+  <path d="M218 88 L240 88 L238 96 L217 95 Z" fill="#f4f4f7" opacity="0.9" />
+</svg>

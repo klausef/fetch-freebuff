@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240" role="img" aria-label="A ride route across a map, with a pickup pin, a destination pin, and a Fetch rider on the way">
+  <title>A ride route across the map</title>
+  <!--
+    Slide 2 — "Rides around Bukidnon".
+
+    The trip the copy promises: a dotted route between a pickup pin and a
+    destination pin, with the rider already on the way. Roads sit behind at low
+    opacity so the route stays the loudest thing in the frame.
+  -->
+  <defs>
+    <linearGradient id="s2-field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33419a" />
+      <stop offset="1" stop-color="#222b70" />
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="240" fill="url(#s2-field)" />
+
+  <!-- Faint street grid -->
+  <g stroke="#f4f4f7" stroke-width="2" opacity="0.16" fill="none">
+    <path d="M0 62 L400 44" />
+    <path d="M0 132 L400 120" />
+    <path d="M0 196 L400 182" />
+    <path d="M78 0 L60 240" />
+    <path d="M196 0 L182 240" />
+    <path d="M318 0 L330 240" />
+  </g>
+  <g fill="#f4f4f7" opacity="0.10">
+    <rect x="88" y="70" width="70" height="46" rx="6" />
+    <rect x="206" y="128" width="86" height="44" rx="6" />
+    <rect x="220" y="58" width="58" height="40" rx="6" />
+  </g>
+
+  <!-- Route -->
+  <path d="M100 184 C150 132, 196 208, 250 150 C276 122, 292 108, 308 96" fill="none" stroke="#ffc72c" stroke-width="7" stroke-linecap="round" stroke-dasharray="1 16" />
+  <path d="M100 184 C150 132, 196 208, 250 150" fill="none" stroke="#ffc72c" stroke-width="7" stroke-linecap="round" opacity="0.35" />
+
+  <!-- Pickup pin -->
+  <circle cx="100" cy="184" r="16" fill="#f4f4f7" />
+  <circle cx="100" cy="184" r="8" fill="#e1251b" />
+
+  <!-- Destination pin -->
+  <path d="M308 60 C290 60, 278 74, 278 90 C278 110, 308 140, 308 140 C308 140, 338 110, 338 90 C338 74, 326 60, 308 60 Z" fill="#e1251b" stroke="#f4f4f7" stroke-width="5" stroke-linejoin="round" />
+  <circle cx="308" cy="88" r="11" fill="#f4f4f7" />
+
+  <!-- Rider badge, mid-route -->
+  <circle cx="242" cy="158" r="30" fill="#f4f4f7" />
+  <circle cx="242" cy="158" r="30" fill="none" stroke="#ffc72c" stroke-width="4" />
+  <g transform="translate(220 136)">
+    <circle cx="10" cy="34" r="8" fill="#14141a" />
+    <circle cx="10" cy="34" r="3" fill="#f4f4f7" />
+    <circle cx="36" cy="34" r="8" fill="#14141a" />
+    <circle cx="36" cy="34" r="3" fill="#f4f4f7" />
+    <rect x="14" y="26" width="20" height="5" rx="2.5" fill="#ffc72c" />
+    <path d="M32 28 L37 33" stroke="#ffc72c" stroke-width="5" stroke-linecap="round" />
+    <path d="M36 27 L33 12" stroke="#e1251b" stroke-width="5" stroke-linecap="round" />
+    <path d="M27 11 L40 11" stroke="#14141a" stroke-width="4" stroke-linecap="round" />
+    <circle cx="30" cy="6" r="7" fill="#e1251b" />
+    <path d="M24 3 A7 7 0 0 1 36 2" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round" />
+  </g>
+
+  <!-- Sparkles -->
+  <path d="M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z" transform="translate(348 44) scale(0.85)" fill="#ffc72c" />
+  <path d="M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z" transform="translate(46 52) scale(0.6)" fill="#f4f4f7" opacity="0.8" />
+</svg>

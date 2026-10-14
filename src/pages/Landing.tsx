@@ -24,30 +24,44 @@ type LandingKey = keyof typeof en.landing;
  * fares — so a translator can see the whole welcome flow at once instead of
  * hunting through a shared pool of unrelated strings.
  *
- * `image` is the public URL of the slide's artwork. The screen is built for one
- * image window per slide: drop each file into `public/` and set `image` here —
- * until then the branded royal-blue placeholder scene renders instead.
+ * `image` is the public URL of the slide's own artwork, one file per slide,
+ * read from `public/illustrations/`. Each is drawn in the crest palette on the
+ * same royal-blue field as the window behind it, so the carousel is branded art
+ * end to end instead of one repeated image. A slide left without `image` falls
+ * back to the branded placeholder scene rather than an empty window.
  */
 const SLIDES: {
   titleKey: LandingKey;
   bodyKey: LandingKey;
   image?: string;
 }[] = [
-  { titleKey: "slide1Title", bodyKey: "slide1Body" },
-  { titleKey: "slide2Title", bodyKey: "slide2Body" },
-  { titleKey: "slide3Title", bodyKey: "slide3Body" },
-  { titleKey: "slide4Title", bodyKey: "slide4Body" },
+  {
+    titleKey: "slide1Title",
+    bodyKey: "slide1Body",
+    image: "/illustrations/slide-1.svg",
+  },
+  {
+    titleKey: "slide2Title",
+    bodyKey: "slide2Body",
+    image: "/illustrations/slide-2.svg",
+  },
+  {
+    titleKey: "slide3Title",
+    bodyKey: "slide3Body",
+    image: "/illustrations/slide-3.svg",
+  },
+  {
+    titleKey: "slide4Title",
+    bodyKey: "slide4Body",
+    image: "/illustrations/slide-4.svg",
+  },
 ];
 
-/** Four-point sparkle used across the placeholder scene. */
-const SPARKLE =
-  "M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z";
-
 /**
- * Temporary stand-in artwork for the welcome carousel's illustration windows.
- * It sketches Fetch's delivery story — parcels on the move, a dotted road,
- * sparkles — in the crest palette, and disappears slide-by-slide the moment
- * real images are attached (see `SLIDES[].image`).
+ * Fallback artwork for a welcome slide with no `image` of its own. It sketches
+ * Fetch's delivery story — parcels on the move, a dotted road, sparkles — in
+ * the crest palette. Every slide currently carries its own illustration, so
+ * this only renders if one is ever added without artwork attached.
  */
 function WelcomeScene() {
   return (
@@ -58,26 +72,30 @@ function WelcomeScene() {
       aria-hidden="true"
     >
       {/* Sparkles */}
-      <path d={SPARKLE} transform="translate(56 52) scale(1.2)" fill="#f4f4f7" />
       <path
-        d={SPARKLE}
+        d="M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z"
+        transform="translate(56 52) scale(1.2)"
+        fill="#f4f4f7"
+      />
+      <path
+        d="M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z"
         transform="translate(210 36) scale(0.45)"
         fill="#ffc72c"
       />
       <path
-        d={SPARKLE}
+        d="M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z"
         transform="translate(332 46) scale(0.8)"
         fill="#f4f4f7"
         opacity="0.9"
       />
       <path
-        d={SPARKLE}
+        d="M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z"
         transform="translate(352 176) scale(0.55)"
         fill="#f4f4f7"
         opacity="0.75"
       />
       <path
-        d={SPARKLE}
+        d="M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z"
         transform="translate(46 182) scale(0.5)"
         fill="#f4f4f7"
         opacity="0.6"
@@ -184,6 +202,8 @@ export default function Landing() {
                       src={slide.image}
                       alt=""
                       className="absolute inset-0 size-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   ) : (
                     <WelcomeScene />

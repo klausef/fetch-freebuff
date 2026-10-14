@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240" role="img" aria-label="A fare receipt with a peso badge beside a shield with a check mark">
+  <title>Fares you can trust</title>
+  <!--
+    Slide 4 — "Fares you can trust".
+
+    The locked-in price: a fare slip with its line items and total, the peso
+    badge that prices it, and a shield-with-check for the promise that the
+    quote is the charge. Bars stand in for the type so the artwork carries no
+    words a translator would have to track.
+  -->
+  <defs>
+    <linearGradient id="s4-field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#33419a" />
+      <stop offset="1" stop-color="#222b70" />
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="240" fill="url(#s4-field)" />
+  <circle cx="206" cy="122" r="126" fill="#3f4dab" opacity="0.4" />
+
+  <!-- Trust shield -->
+  <path d="M104 58 L148 74 L148 110 Q148 142 104 160 Q60 142 60 110 L60 74 Z" fill="#ffc72c" stroke="#f4f4f7" stroke-width="6" stroke-linejoin="round" />
+  <path d="M82 108 L97 123 L128 88" fill="none" stroke="#14141a" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Fare slip -->
+  <g transform="rotate(-7 260 122)">
+    <rect x="190" y="42" width="140" height="158" rx="14" fill="#f4f4f7" />
+    <path d="M190 56 Q190 42 204 42 L316 42 Q330 42 330 56 L330 78 L190 78 Z" fill="#e1251b" />
+    <circle cx="208" cy="60" r="6" fill="#ffc72c" />
+    <rect x="222" y="55" width="70" height="9" rx="4.5" fill="#f4f4f7" opacity="0.9" />
+
+    <!-- Line items -->
+    <rect x="206" y="98" width="56" height="9" rx="4.5" fill="#cfd0e0" />
+    <rect x="286" y="98" width="32" height="9" rx="4.5" fill="#14141a" />
+    <rect x="206" y="120" width="44" height="9" rx="4.5" fill="#cfd0e0" />
+    <rect x="286" y="120" width="32" height="9" rx="4.5" fill="#14141a" />
+    <rect x="206" y="142" width="50" height="9" rx="4.5" fill="#cfd0e0" />
+    <rect x="286" y="142" width="32" height="9" rx="4.5" fill="#14141a" />
+
+    <!-- Divider + total -->
+    <path d="M206 164 L314 164" stroke="#cfd0e0" stroke-width="3" stroke-dasharray="6 6" />
+    <rect x="206" y="176" width="44" height="11" rx="5.5" fill="#8b8ca0" />
+    <rect x="272" y="174" width="46" height="14" rx="7" fill="#e1251b" />
+  </g>
+
+  <!-- Peso badge -->
+  <circle cx="176" cy="190" r="32" fill="#ffc72c" stroke="#f4f4f7" stroke-width="7" />
+  <g fill="none" stroke="#14141a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M170 174 L170 206" />
+    <path d="M170 174 L183 174 A9 9 0 0 1 183 192 L170 192" />
+    <path d="M163 181 L190 181" />
+    <path d="M163 193 L190 193" />
+  </g>
+
+  <!-- Sparkles -->
+  <path d="M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z" transform="translate(356 54) scale(0.95)" fill="#ffc72c" />
+  <path d="M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z" transform="translate(42 178) scale(0.7)" fill="#f4f4f7" opacity="0.8" />
+  <path d="M0 -12 C1.6 -3.6, 3.6 -1.6, 12 0 C3.6 1.6, 1.6 3.6, 0 12 C-1.6 3.6, -3.6 1.6, -12 0 C-3.6 -1.6, -1.6 -3.6, 0 -12 Z" transform="translate(150 40) scale(0.6)" fill="#f4f4f7" opacity="0.7" />
+</svg>
