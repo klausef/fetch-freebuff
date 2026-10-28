@@ -248,8 +248,8 @@ export default function Landing() {
                 // dimples pressed into the page, so the row itself is a piece
                 // of the surface rather than three floating dots.
                 current === index
-                  ? "w-8 bg-fetch-brick shadow-[3px_3px_7px_var(--neu-dark),-3px_-3px_7px_var(--neu-light)]"
-                  : "w-2.5 bg-[var(--neu-shade)] shadow-[inset_1.5px_1.5px_3px_var(--neu-dark),inset_-1.5px_-1.5px_3px_var(--neu-light)] hover:bg-[var(--neu-highlight)]",
+                  ? "w-8 bg-fetch-brick shadow-[0_1px_2px_var(--neu-contact),4px_5px_12px_-6px_var(--neu-dark),-4px_-4px_10px_-7px_var(--neu-light)]"
+                  : "w-2.5 bg-[var(--border)] shadow-[inset_1.5px_1.5px_3px_var(--neu-dark),inset_-1.5px_-1.5px_3px_var(--neu-light)] hover:bg-[var(--neu-shade)]",
               )}
             />
           ))}
@@ -275,7 +275,7 @@ export default function Landing() {
               users in and creates new accounts from the same form. */}
           <Button
             asChild
-            className="neu-extrude h-12 w-full rounded-2xl bg-fetch-brick text-base font-bold text-white hover:brightness-[1.06] sm:h-12"
+            className="neu-extrude neu-gloss h-12 w-full rounded-2xl bg-fetch-brick text-base font-bold text-white hover:brightness-[1.06] sm:h-12"
           >
             <Link to="/auth">{t("landing", "cta")}</Link>
           </Button>

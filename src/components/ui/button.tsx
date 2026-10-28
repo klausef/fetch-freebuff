@@ -14,9 +14,9 @@ const buttonVariants = cva(
       // src/index.css), so the control responds to the thumb, not just hover.
       variant: {
         default:
-          "neu-extrude bg-primary text-primary-foreground hover:brightness-[1.06]",
+          "neu-extrude neu-gloss bg-primary text-primary-foreground hover:brightness-[1.06]",
         destructive:
-          "neu-extrude bg-destructive text-white hover:brightness-[1.06] focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
+          "neu-extrude neu-gloss bg-destructive text-white hover:brightness-[1.06] focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
         outline:
           "neu-raised-sm text-foreground hover:text-primary",
         secondary: "neu-raised-sm text-secondary-foreground",

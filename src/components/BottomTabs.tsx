@@ -36,7 +36,7 @@ export function BottomTabs({
   // top border, so the bar belongs to the same soft surface as the screen above
   // it. The active tab's glyph then sits in a pressed groove.
   return (
-    <nav className="safe-bottom fixed inset-x-0 bottom-0 z-40 bg-background shadow-[0_-14px_30px_-24px_var(--neu-dark)]">
+    <nav className="safe-bottom fixed inset-x-0 bottom-0 z-40 bg-background shadow-[0_-1px_2px_var(--neu-contact),0_-16px_34px_-24px_var(--neu-dark)]">
       <div className="mx-auto flex h-14 w-full max-w-lg items-stretch justify-around px-1">
         {list.map((tab) => {
           const Icon = tab.icon;
