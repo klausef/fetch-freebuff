@@ -80,7 +80,7 @@ export function RequireAuth({
 
     return (
       <main className="flex min-h-dvh items-center justify-center bg-background px-4 py-10">
-        <Card className="w-full max-w-sm border-border/70 shadow-none">
+        <Card className="w-full max-w-sm">
           <CardHeader className="items-center text-center">
             <div className="mb-2 flex size-11 items-center justify-center rounded-full bg-secondary text-muted-foreground">
               <Lock className="size-5" />

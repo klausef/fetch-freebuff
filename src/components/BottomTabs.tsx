@@ -32,8 +32,11 @@ export function BottomTabs({
   const t = useT();
   const list = tabs ?? roleTabs(role, hasActiveRide);
 
+  // An opaque slab in the page colour, lifted by an upward shadow rather than a
+  // top border, so the bar belongs to the same soft surface as the screen above
+  // it. The active tab's glyph then sits in a pressed groove.
   return (
-    <nav className="safe-bottom fixed inset-x-0 bottom-0 z-40 border-t border-border/70 bg-background/95 backdrop-blur">
+    <nav className="safe-bottom fixed inset-x-0 bottom-0 z-40 bg-background shadow-[0_-14px_30px_-24px_var(--neu-dark)]">
       <div className="mx-auto flex h-14 w-full max-w-lg items-stretch justify-around px-1">
         {list.map((tab) => {
           const Icon = tab.icon;
@@ -42,19 +45,34 @@ export function BottomTabs({
               key={tab.key}
               to={tab.to}
               end
-              className={({ isActive }) =>
-                cn(
+              className={({ isActive }) => {
+                const active = isActive || tab.key === activeKey;
+                return cn(
                   // A full-height cell, so the whole tab is tappable and not
                   // just the glyph.
-                  "flex min-w-16 flex-1 cursor-pointer flex-col items-center justify-center gap-0.5 px-2 text-[11px] font-medium tracking-tight transition-colors",
-                  isActive || tab.key === activeKey
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground",
-                )
-              }
+                  "flex min-w-16 flex-1 cursor-pointer flex-col items-center justify-center gap-1 px-2 text-[11px] font-medium tracking-tight transition-colors",
+                  active ? "text-primary" : "text-muted-foreground hover:text-foreground",
+                );
+              }}
             >
-              <Icon className="size-5" aria-hidden="true" />
-              <span>{t("nav", tab.labelKey)}</span>
+              {({ isActive }) => {
+                const active = isActive || tab.key === activeKey;
+                return (
+                  <>
+                    {/* The active glyph sits in a pressed groove, the same
+                        dimple the landing-page dots use. */}
+                    <span
+                      className={cn(
+                        "flex items-center justify-center rounded-full px-3.5 py-0.5 transition-all",
+                        active && "neu-inset-sm",
+                      )}
+                    >
+                      <Icon className="size-5" aria-hidden="true" />
+                    </span>
+                    <span>{t("nav", tab.labelKey)}</span>
+                  </>
+                );
+              }}
             </NavLink>
           );
         })}

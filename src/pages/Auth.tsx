@@ -160,8 +160,8 @@ export function Auth({ redirectAfterAuth = "/app" }: AuthProps = {}) {
   };
 
   return (
-    <div className="flex min-h-dvh flex-col bg-background text-foreground">
-      <header className="safe-top flex items-center justify-between gap-3 border-b border-border/70 px-4 py-3 sm:px-6">
+    <div className="flex min-h-dvh flex-col bg-background bg-[radial-gradient(120%_80%_at_15%_0%,var(--neu-highlight),transparent_60%)] text-foreground">
+      <header className="safe-top flex items-center justify-between gap-3 px-4 py-3 shadow-[0_14px_30px_-28px_var(--neu-dark)] sm:px-6">
         <Link
           to="/"
           className="rounded-md"
@@ -237,7 +237,7 @@ export function Auth({ redirectAfterAuth = "/app" }: AuthProps = {}) {
           ) : null}
 
           {step === "signIn" ? (
-            <section className="rounded-xl border border-border/70 bg-card p-5 sm:p-6">
+            <section className="neu-raised rounded-2xl p-5 sm:p-6">
               <h1 className="text-2xl font-bold tracking-tight">
                 {t("auth", "title")}
               </h1>
@@ -380,7 +380,7 @@ export function Auth({ redirectAfterAuth = "/app" }: AuthProps = {}) {
               </p>
             </section>
           ) : (
-            <section className="rounded-xl border border-border/70 bg-card p-5 sm:p-6">
+            <section className="neu-raised rounded-2xl p-5 sm:p-6">
               <h1 className="text-xl font-bold tracking-tight">
                 {t("auth", "checkEmail")}
               </h1>
