@@ -167,7 +167,7 @@ export default function Landing() {
   }, [api]);
 
   return (
-    <div className="safe-bottom flex min-h-dvh flex-col bg-background bg-[radial-gradient(120%_80%_at_15%_0%,var(--neu-highlight),transparent_60%)] text-foreground">
+    <div className="safe-bottom flex min-h-dvh flex-col bg-background bg-[radial-gradient(120%_80%_at_15%_0%,var(--soft-highlight),transparent_60%)] text-foreground">
       {/* Brand + language */}
       <header className="safe-top">
         <div className="mx-auto flex w-full max-w-md items-start justify-between px-5 pt-5 sm:px-6">
@@ -197,7 +197,7 @@ export default function Landing() {
               >
                 {/* The illustration sits in a pressed well: the artwork is a
                     screen set into the soft surface, not a card lying on it. */}
-                <div className="neu-inset w-full rounded-[2rem] p-2 sm:p-2.5">
+                <div className="soft-recessed w-full rounded-[2rem] p-2 sm:p-2.5">
                   <div className="relative aspect-video w-full overflow-hidden rounded-[1.5rem] bg-fetch-royal">
                     {slide.image ? (
                       <img
@@ -244,12 +244,12 @@ export default function Landing() {
               onClick={() => api?.scrollTo(index)}
               className={cn(
                 "h-2.5 rounded-full transition-all duration-300",
-                // The current slide is a small extruded pill; the others are
-                // dimples pressed into the page, so the row itself is a piece
-                // of the surface rather than three floating dots.
+                // The current slide is a raised pill; the others sit flush as
+                // soft dimples, so the row reads as part of the surface rather
+                // than three floating dots.
                 current === index
-                  ? "w-8 bg-fetch-brick shadow-[0_1px_2px_var(--neu-contact),4px_5px_12px_-6px_var(--neu-dark),-4px_-4px_10px_-7px_var(--neu-light)]"
-                  : "w-2.5 bg-[var(--border)] shadow-[inset_1.5px_1.5px_3px_var(--neu-dark),inset_-1.5px_-1.5px_3px_var(--neu-light)] hover:bg-[var(--neu-shade)]",
+                  ? "w-8 bg-fetch-brick shadow-[0_1px_2px_var(--soft-contact),4px_5px_12px_-6px_var(--soft-dark),-4px_-4px_10px_-7px_var(--soft-light)]"
+                  : "w-2.5 bg-[var(--border)] shadow-[inset_1.5px_1.5px_3px_var(--soft-dark),inset_-1.5px_-1.5px_3px_var(--soft-light)] hover:bg-[var(--soft-shade)]",
               )}
             />
           ))}
@@ -275,7 +275,7 @@ export default function Landing() {
               users in and creates new accounts from the same form. */}
           <Button
             asChild
-            className="neu-extrude neu-gloss h-12 w-full rounded-2xl bg-fetch-brick text-base font-bold text-white hover:brightness-[1.06] sm:h-12"
+            className="soft-action h-12 w-full rounded-2xl bg-fetch-brick text-base font-bold text-white hover:brightness-[1.06] sm:h-12"
           >
             <Link to="/auth">{t("landing", "cta")}</Link>
           </Button>

@@ -74,15 +74,14 @@
 /*
   CHANGE VALUES FOR THEME
 
-  Soft UI, the evolved form of the first pass: the page and its cards no longer
-  share one colour. The background is the material everything is carved out of,
-  a card is a shade lighter than it, and depth is carried by a TRANSLUCENT
-  warm shadow plus a small contact shadow — not by an opaque grey pair painted
-  onto a matching field. Every surface keeps its soft glow, but panels, borders
-  and text now carry enough contrast to stand on their own at any size.
+  Soft UI. The page is one continuous warm material; surfaces earn their depth
+  from a translucent warm shadow, a small contact edge and a faint diagonal
+  gradient — never from a solid grey drop shadow. Cards sit a shade above the
+  page so a panel reads before its shadow is seen, fields sink below it with a
+  hairline of their own, and text keeps full contrast at every size.
 
-  The crest still supplies the accent: the clay red for actions, the warm
-  brown tint for shadows instead of neutral grey.
+  The crest supplies the accent: clay red for actions, warm brown for shadows
+  instead of neutral grey.
 */
 :root {
   --radius: 1rem;
@@ -119,18 +118,16 @@
   --sidebar-border: #e3dad0;
   --sidebar-ring: #bc4130;
 
-  /* The tones every .neu-* shape is built from. `base` is the material a shape
-     is pressed INTO (the page), `surface` is the material it is lifted OUT of
-     (a card, a shade brighter), `light`/`dark` are translucent shadow colours,
-     and `highlight`/`shade` are the faint gradient that keeps a large panel
-     from reading as flat paper. */
-  --neu-base: #f1ece6;
-  --neu-surface: #faf7f2;
-  --neu-highlight: #ffffff;
-  --neu-shade: #efe9e1;
-  --neu-light: rgb(255 255 255 / 0.9);
-  --neu-dark: rgb(74 56 44 / 0.16);
-  --neu-contact: rgb(74 56 44 / 0.07);
+  /* The tones every soft-UI shape is built from. `surface` is the material a
+     shape is lifted out of (a card or a control, a shade above the page),
+     `highlight`/`shade` are the faint diagonal gradient across it, and
+     `light`/`dark`/`contact` are the translucent shadows it casts. */
+  --soft-surface: #faf7f2;
+  --soft-highlight: #ffffff;
+  --soft-shade: #efe9e1;
+  --soft-light: rgb(255 255 255 / 0.9);
+  --soft-dark: rgb(74 56 44 / 0.16);
+  --soft-contact: rgb(74 56 44 / 0.07);
 }
 
 .dark {
@@ -167,13 +164,12 @@
   --sidebar-border: #3b3843;
   --sidebar-ring: #e06353;
 
-  --neu-base: #222027;
-  --neu-surface: #2b2930;
-  --neu-highlight: #322f38;
-  --neu-shade: #26242b;
-  --neu-light: rgb(255 255 255 / 0.06);
-  --neu-dark: rgb(0 0 0 / 0.55);
-  --neu-contact: rgb(0 0 0 / 0.3);
+  --soft-surface: #2b2930;
+  --soft-highlight: #322f38;
+  --soft-shade: #26242b;
+  --soft-light: rgb(255 255 255 / 0.06);
+  --soft-dark: rgb(0 0 0 / 0.55);
+  --soft-contact: rgb(0 0 0 / 0.3);
 }
 
 @layer base {
@@ -235,92 +231,90 @@
   /*
     Soft UI surfaces.
 
-    A raised element is the card shade, lit from the top-left: a translucent
-    white glow on one side, a warm brown shade on the other, plus a small
-    contact shadow so it sits on the page instead of hovering over it. An inset
-    element is the same two shadows flipped inward, so it reads as a hollow
-    pressed into the material.
+    A raised element is the card shade, lit from the top-left: a faint diagonal
+    gradient, a translucent white glow on one side, a warm brown shade on the
+    other, and a small contact edge so it sits ON the page instead of hovering
+    over it. A recessed element flips the same light inward, so it reads as a
+    hollow pressed into the material.
 
     All of them are classes in the components layer, so any Tailwind utility on
     the same element still wins — a `bg-primary` button keeps its red face and
     only borrows the shadow.
   */
-  .neu-raised {
-    background-color: var(--neu-surface);
+  .soft-raised {
+    background-color: var(--soft-surface);
     background-image: linear-gradient(
       145deg,
-      var(--neu-highlight),
-      var(--neu-shade)
+      var(--soft-highlight),
+      var(--soft-shade)
     );
     box-shadow:
-      0 1px 2px var(--neu-contact),
-      10px 12px 26px -16px var(--neu-dark),
-      -7px -7px 16px -10px var(--neu-light);
+      0 1px 2px var(--soft-contact),
+      10px 12px 26px -16px var(--soft-dark),
+      -7px -7px 16px -10px var(--soft-light);
   }
-  .neu-raised-sm {
-    background-color: var(--neu-surface);
+  .soft-raised-sm {
+    background-color: var(--soft-surface);
     background-image: linear-gradient(
       145deg,
-      var(--neu-highlight),
-      var(--neu-shade)
+      var(--soft-highlight),
+      var(--soft-shade)
     );
     box-shadow:
-      0 1px 2px var(--neu-contact),
-      6px 7px 16px -11px var(--neu-dark),
-      -5px -5px 12px -8px var(--neu-light);
+      0 1px 2px var(--soft-contact),
+      6px 7px 16px -11px var(--soft-dark),
+      -5px -5px 12px -8px var(--soft-light);
   }
-  .neu-inset {
-    background-color: var(--neu-base);
+  .soft-recessed {
+    background-color: var(--background);
     background-image: linear-gradient(
       145deg,
-      var(--neu-shade),
-      var(--neu-highlight)
+      var(--soft-shade),
+      var(--soft-highlight)
     );
     box-shadow:
-      inset 5px 5px 13px -7px var(--neu-dark),
-      inset -5px -5px 13px -7px var(--neu-light);
+      inset 5px 5px 13px -7px var(--soft-dark),
+      inset -5px -5px 13px -7px var(--soft-light);
   }
-  .neu-inset-sm {
-    background-color: var(--neu-base);
+  .soft-recessed-sm {
+    background-color: var(--background);
     box-shadow:
-      inset 3px 3px 7px -4px var(--neu-dark),
-      inset -3px -3px 7px -4px var(--neu-light);
+      inset 3px 3px 7px -4px var(--soft-dark),
+      inset -3px -3px 7px -4px var(--soft-light);
   }
-  /* A field is a pressed groove that keeps a hairline of its own, so a form
+  /* A field is a recessed groove that keeps a hairline of its own, so a form
      stays readable even where the inset shadow is too subtle to see. It lives
-     here rather than as `neu-inset-sm border` so a wrapper that flattens the
-     field (`border-0 bg-transparent shadow-none`, as InputGroup does) can
+     here rather than as `soft-recessed-sm border` so a wrapper that flattens
+     the field (`border-0 bg-transparent shadow-none`, as InputGroup does) can
      still cancel the whole frame with a utility. */
-  .neu-field {
-    background-color: var(--neu-base);
+  .soft-field {
+    background-color: var(--background);
     border: 1px solid;
     border-color: color-mix(in srgb, var(--border) 75%, transparent);
     box-shadow:
-      inset 3px 3px 7px -4px var(--neu-dark),
-      inset -3px -3px 7px -4px var(--neu-light);
+      inset 3px 3px 7px -4px var(--soft-dark),
+      inset -3px -3px 7px -4px var(--soft-light);
   }
-  /* Shadows only, for a coloured pad whose face comes from `bg-*`. */
-  .neu-extrude {
-    box-shadow:
-      0 1px 2px var(--neu-contact),
-      7px 8px 18px -12px var(--neu-dark),
-      -5px -5px 12px -8px var(--neu-light);
-  }
-  /* The soft sheen down the top of a filled action — the part of soft UI that
-     neumorphism left out. Stacks over `bg-primary` rather than replacing it. */
-  .neu-gloss {
+  /* The face of a raised action: a white sheen down the top edge over whatever
+     colour `bg-*` gives it, plus the soft shadow of a pad standing off the
+     page. Stacks over `bg-primary` rather than replacing it. */
+  .soft-action {
     background-image: linear-gradient(
       to bottom,
       rgb(255 255 255 / 0.22),
       rgb(255 255 255 / 0)
     );
-  }
-  .neu-extrude:active,
-  .neu-raised-sm:active,
-  .neu-raised:active {
     box-shadow:
-      inset 4px 4px 9px -5px var(--neu-dark),
-      inset -4px -4px 9px -5px var(--neu-light);
+      0 1px 2px var(--soft-contact),
+      7px 8px 18px -12px var(--soft-dark),
+      -5px -5px 12px -8px var(--soft-light);
+  }
+  .soft-action:active,
+  .soft-raised:active,
+  .soft-raised-sm:active {
+    box-shadow:
+      inset 4px 4px 9px -5px var(--soft-dark),
+      inset -4px -4px 9px -5px var(--soft-light);
   }
 
   /*
@@ -334,8 +328,8 @@
   */
   .bg-card {
     box-shadow:
-      0 1px 2px var(--neu-contact),
-      7px 8px 18px -12px var(--neu-dark),
-      -5px -5px 12px -8px var(--neu-light);
+      0 1px 2px var(--soft-contact),
+      7px 8px 18px -12px var(--soft-dark),
+      -5px -5px 12px -8px var(--soft-light);
   }
 }

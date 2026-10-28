@@ -61,17 +61,17 @@ function SheetContent({
           // edge it grows from — rather than by a hard drop shadow.
           "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out fixed z-50 flex flex-col gap-4 transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500",
           side === "right" &&
-            "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 shadow-[-2px_0_5px_-2px_var(--neu-contact),-18px_0_44px_-24px_var(--neu-dark)] sm:max-w-sm",
+            "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right inset-y-0 right-0 h-full w-3/4 shadow-[-2px_0_5px_-2px_var(--soft-contact),-18px_0_44px_-24px_var(--soft-dark)] sm:max-w-sm",
           side === "left" &&
-            "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 h-full w-3/4 shadow-[2px_0_5px_-2px_var(--neu-contact),18px_0_44px_-24px_var(--neu-dark)] sm:max-w-sm",
+            "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left inset-y-0 left-0 h-full w-3/4 shadow-[2px_0_5px_-2px_var(--soft-contact),18px_0_44px_-24px_var(--soft-dark)] sm:max-w-sm",
           side === "top" &&
-            "data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top inset-x-0 top-0 h-auto rounded-b-3xl shadow-[0_2px_5px_-2px_var(--neu-contact),0_18px_44px_-24px_var(--neu-dark)]",
+            "data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top inset-x-0 top-0 h-auto rounded-b-3xl shadow-[0_2px_5px_-2px_var(--soft-contact),0_18px_44px_-24px_var(--soft-dark)]",
           // No .safe-bottom here: callers own the sheet's padding, and the
           // safe-area helpers set padding outright, so a caller passing pb-6
           // would either lose the home-indicator inset or lose its own spacing
           // depending on order. Sheets add the inset to their own padding.
           side === "bottom" &&
-            "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 bottom-0 h-auto max-h-[92dvh] rounded-t-3xl shadow-[0_-2px_5px_-2px_var(--neu-contact),0_-18px_44px_-24px_var(--neu-dark)]",
+            "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom inset-x-0 bottom-0 h-auto max-h-[92dvh] rounded-t-3xl shadow-[0_-2px_5px_-2px_var(--soft-contact),0_-18px_44px_-24px_var(--soft-dark)]",
           className
         )}
         {...props}
