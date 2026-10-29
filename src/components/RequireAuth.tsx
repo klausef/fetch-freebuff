@@ -67,7 +67,7 @@ export function RequireAuth({
 
   if (isLoading) {
     return (
-      <div className="flex min-h-dvh items-center justify-center bg-background">
+      <div className="soft-canvas flex min-h-dvh items-center justify-center">
         <Loader2 className="size-5 animate-spin text-muted-foreground" />
       </div>
     );
@@ -79,10 +79,10 @@ export function RequireAuth({
     }
 
     return (
-      <main className="flex min-h-dvh items-center justify-center bg-background px-4 py-10">
-        <Card className="w-full max-w-sm border-border/70 shadow-none">
+      <main className="soft-canvas flex min-h-dvh items-center justify-center px-4 py-10">
+        <Card className="w-full max-w-sm">
           <CardHeader className="items-center text-center">
-            <div className="mb-2 flex size-11 items-center justify-center rounded-full bg-secondary text-muted-foreground">
+            <div className="mb-2 flex size-11 items-center justify-center rounded-full border border-border/50 bg-secondary text-muted-foreground shadow-soft-sm dark:border-white/[0.07]">
               <Lock className="size-5" />
             </div>
             <CardTitle className="text-xl font-bold tracking-tight">

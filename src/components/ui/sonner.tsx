@@ -26,8 +26,10 @@ const Toaster = ({ ...props }: ToasterProps) => {
         {
           "--normal-bg": "var(--popover)",
           "--normal-text": "var(--popover-foreground)",
-          "--normal-border": "var(--border)",
-          "--border-radius": "var(--radius)",
+          "--normal-border": "color-mix(in oklab, var(--border) 62%, transparent)",
+          "--border-radius": "1.25rem",
+          boxShadow:
+            "0 1px 2px rgb(86 62 45 / 0.05), 0 4px 10px -4px rgb(86 62 45 / 0.06), 0 24px 48px -28px rgb(86 62 45 / 0.34), inset 0 1px 0 rgb(255 255 255 / 0.85)",
         } as React.CSSProperties
       }
       {...props}

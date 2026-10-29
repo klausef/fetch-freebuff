@@ -113,7 +113,7 @@ export function WhoIsRiding({
       </div>
 
       {isOther ? (
-        <div className="space-y-3 rounded-xl border border-border bg-secondary/40 p-3">
+        <div className="space-y-3 rounded-2xl border border-border/45 bg-secondary/40 p-3 shadow-inset-soft dark:border-white/[0.06]">
           <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
             Passenger details
           </p>

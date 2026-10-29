@@ -179,7 +179,7 @@ export default function RiderRegister() {
   if (profile?.role === "rider") {
     return (
       <main className="mx-auto flex min-h-dvh max-w-md flex-col justify-center px-5">
-        <div className="rounded-2xl border border-border bg-card p-6 text-center">
+        <div className="rounded-[1.75rem] border border-white/60 bg-card/90 p-6 text-center shadow-soft-lg backdrop-blur-sm dark:border-white/[0.07]">
           <Check className="mx-auto size-6 text-primary" />
           <p className="mt-3 text-sm font-medium tracking-tight">
             You are already registered to drive.
@@ -200,7 +200,7 @@ export default function RiderRegister() {
   if (profile?.role === "commuter") {
     return (
       <main className="mx-auto flex min-h-dvh max-w-md flex-col justify-center px-5">
-        <div className="rounded-2xl border border-border bg-card p-6 text-center">
+        <div className="rounded-[1.75rem] border border-white/60 bg-card/90 p-6 text-center shadow-soft-lg backdrop-blur-sm dark:border-white/[0.07]">
           <p className="text-sm font-medium tracking-tight">
             This account is already a passenger account.
           </p>
@@ -303,7 +303,7 @@ export default function RiderRegister() {
             />
           </div>
 
-          <div className="rounded-xl border border-border p-3">
+          <div className="rounded-[1.25rem] border border-white/60 bg-card/70 p-3 shadow-soft-sm dark:border-white/[0.07]">
             <p className="text-sm font-medium tracking-tight">Your vehicle</p>
             <p className="mt-0.5 text-[11px] text-muted-foreground">
               Riders see this on the map while they wait.

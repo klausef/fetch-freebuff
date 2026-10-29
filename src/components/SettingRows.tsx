@@ -110,7 +110,7 @@ export function SettingGroup({
           {title}
         </h2>
       ) : null}
-      <div className="divide-y divide-border/60 overflow-hidden rounded-2xl border border-border/70 bg-card">
+      <div className="soft-sheen divide-y divide-border/45 overflow-hidden rounded-[1.75rem] border border-border/55 bg-card/95 shadow-soft dark:border-white/[0.07] dark:bg-card/85">
         {children}
       </div>
     </section>

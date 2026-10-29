@@ -92,7 +92,7 @@ export function SettingsSheet({
                     onClick={() => setTheme(option.value)}
                     className={cn(
                       "h-auto min-h-11 flex-col gap-1 rounded-xl",
-                      active ? "text-white" : "text-muted-foreground",
+                      active ? "text-primary-foreground" : "text-muted-foreground",
                     )}
                   >
                     <Icon className="size-4" />

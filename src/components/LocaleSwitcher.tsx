@@ -23,7 +23,7 @@ export function LocaleSwitcher({ className }: { className?: string }) {
       role="group"
       aria-label="Language"
       className={cn(
-        "inline-flex items-center rounded-full border border-border/80 bg-background/70 p-0.5",
+        "inline-flex items-center rounded-full border border-border/50 bg-card/80 p-1 shadow-soft-sm backdrop-blur-md dark:border-white/10 dark:bg-card/55",
         className,
       )}
     >
@@ -38,11 +38,11 @@ export function LocaleSwitcher({ className }: { className?: string }) {
             aria-pressed={active}
             onClick={() => setLocale(option as Locale)}
             className={cn(
-              "min-h-9 rounded-full px-3 text-xs font-medium tracking-tight transition-colors",
+              "min-h-9 rounded-full px-3 text-xs font-semibold tracking-tight transition-all duration-200",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
               active
-                ? "bg-fetch-red text-white"
-                : "text-muted-foreground hover:text-foreground",
+                ? "bg-primary text-primary-foreground shadow-soft-sm"
+                : "text-muted-foreground hover:bg-foreground/[0.05] hover:text-foreground",
             )}
           >
             {LOCALE_NAMES[option]}

@@ -9,6 +9,16 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  /* Soft UI evolution: depth is carried by a pair of shadows — a warm ambient
+     cast below and a paper highlight on the top edge — rather than by a hard
+     border. The values live outside @theme so .dark can swap them at runtime. */
+  --shadow-soft-sm: var(--soft-shadow-sm);
+  --shadow-soft: var(--soft-shadow);
+  --shadow-soft-lg: var(--soft-shadow-lg);
+  --shadow-inset-soft: var(--soft-inset-soft);
+  --shadow-inset-deep: var(--soft-inset-deep);
+  --shadow-glow: var(--soft-shadow-glow);
+  --ease-soft: var(--soft-ease);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -73,76 +83,137 @@
 
 /* CHANGE VALUES FOR THEME */
 :root {
-  --radius: 0.625rem;
-  --background: #ffffff;
-  --foreground: var(--brand-ink);
-  --card: #ffffff;
-  --card-foreground: var(--brand-ink);
-  --popover: #ffffff;
-  --popover-foreground: var(--brand-ink);
-  --primary: var(--brand-red);
-  --primary-foreground: #ffffff;
+  --radius: 1.125rem;
+  --background: #f1ede6;
+  --foreground: #2b2724;
+  --card: #fbf8f2;
+  --card-foreground: #2b2724;
+  --popover: #fcfaf6;
+  --popover-foreground: #2b2724;
+  --primary: #a8432f;
+  --primary-foreground: #fff8f2;
   /* Neutrals are warm-tinted rather than pure gray: the crest is a red field
      with a gold ring, so even the "empty" surfaces carry a trace of the red
-     instead of reading as a neutral template. */
-  --secondary: #fdeceb;
-  --secondary-foreground: var(--brand-ink);
-  --muted: #f7f1f0;
-  --muted-foreground: #6d6664;
-  --accent: var(--brand-gold);
-  --accent-foreground: var(--brand-ink);
-  --destructive: #c81e1e;
-  --border: #ebdcd9;
-  --input: #ebdcd9;
-  --ring: var(--brand-red);
+     instead of reading as a neutral template. The background sits a step below
+     the card so the soft shadows have something to cast onto. */
+  --secondary: #eaddd0;
+  --secondary-foreground: #3a2f29;
+  --muted: #e8e0d6;
+  --muted-foreground: #6b625a;
+  --accent: #e8b64c;
+  --accent-foreground: #2b2724;
+  --destructive: #b83a32;
+  --border: #e3d8cb;
+  --input: #e3d8cb;
+  --ring: #b0523b;
   --chart-1: var(--brand-red);
   --chart-2: var(--brand-gold);
   --chart-3: var(--brand-blue);
   --chart-4: var(--brand-ink);
   --chart-5: #2f8f83;
-  --sidebar: #ffffff;
-  --sidebar-foreground: var(--brand-ink);
-  --sidebar-primary: var(--brand-red);
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #fdeceb;
-  --sidebar-accent-foreground: var(--brand-ink);
-  --sidebar-border: #ebdcd9;
-  --sidebar-ring: var(--brand-red);
+  --sidebar: #f7f2eb;
+  --sidebar-foreground: #2b2724;
+  --sidebar-primary: #a8432f;
+  --sidebar-primary-foreground: #fff8f2;
+  --sidebar-accent: #eaddd0;
+  --sidebar-accent-foreground: #3a2f29;
+  --sidebar-border: #e3d8cb;
+  --sidebar-ring: #b0523b;
+
+  /* Soft UI depth tokens. Depth is a stack, not one blur: a tight contact
+     shadow anchors the surface, a mid shadow describes its lift, and a wide
+     ambient pass lets it sit in the room. The top rim is warm white, so a
+     raised sheet reads as paper rather than plastic. */
+  --soft-shadow-sm:
+    0 1px 1px rgb(86 62 45 / 0.05), 0 2px 4px -2px rgb(86 62 45 / 0.06),
+    0 10px 22px -16px rgb(86 62 45 / 0.24),
+    inset 0 1px 0 rgb(255 255 255 / 0.8);
+  --soft-shadow:
+    0 1px 2px rgb(86 62 45 / 0.05), 0 4px 10px -4px rgb(86 62 45 / 0.06),
+    0 24px 48px -28px rgb(86 62 45 / 0.34),
+    inset 0 1px 0 rgb(255 255 255 / 0.85);
+  --soft-shadow-lg:
+    0 2px 4px rgb(86 62 45 / 0.05), 0 8px 18px -8px rgb(86 62 45 / 0.07),
+    0 42px 80px -40px rgb(86 62 45 / 0.42),
+    inset 0 1px 0 rgb(255 255 255 / 0.9);
+  --soft-inset-soft:
+    inset 3px 3px 7px rgb(86 62 45 / 0.1),
+    inset -3px -3px 8px rgb(255 255 255 / 0.8);
+  --soft-inset-deep:
+    inset 4px 4px 10px rgb(86 62 45 / 0.14),
+    inset -4px -4px 10px rgb(255 255 255 / 0.85);
+  --soft-shadow-glow:
+    0 0 0 1px rgb(168 67 47 / 0.1), 0 22px 45px -18px rgb(168 67 47 / 0.42);
+  --soft-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Ambient colour for the page canvas. Kept very low-contrast: the glow is
+     atmosphere, not decoration. `--soft-wash` is the daylight falling from
+     the top of the page; the three glows tint the corners beneath it. */
+  --soft-wash: rgb(255 255 255 / 0.55);
+  --soft-glow-gold: rgb(232 182 76 / 0.2);
+  --soft-glow-rose: rgb(168 67 47 / 0.12);
+  --soft-glow-blue: rgb(46 58 140 / 0.09);
 }
 
 .dark {
-  --background: #0f0f12;
-  --foreground: #f7f5f2;
-  --card: #17171c;
-  --card-foreground: #f7f5f2;
-  --popover: #17171c;
-  --popover-foreground: #f7f5f2;
+  --background: #141210;
+  --foreground: #f4eee6;
+  --card: #1d1a17;
+  --card-foreground: #f4eee6;
+  --popover: #211d19;
+  --popover-foreground: #f4eee6;
   /* Lifted off the brand red so it holds up against a near-black field. */
-  --primary: #ff4438;
-  --primary-foreground: #ffffff;
-  --secondary: #251b1c;
-  --secondary-foreground: #f7f5f2;
-  --muted: #241b1d;
-  --muted-foreground: #a09a99;
-  --accent: var(--brand-gold);
-  --accent-foreground: var(--brand-ink);
-  --destructive: #ff6b6b;
-  --border: #ffffff1a;
-  --input: #ffffff26;
-  --ring: #ff4438;
-  --chart-1: #ff4438;
+  --primary: #e07058;
+  --primary-foreground: #1b1210;
+  --secondary: #2a241f;
+  --secondary-foreground: #f4eee6;
+  --muted: #241f1b;
+  --muted-foreground: #a89f95;
+  --accent: #e8b64c;
+  --accent-foreground: #1b1512;
+  --destructive: #e06055;
+  --border: #322c26;
+  --input: #322c26;
+  --ring: #e07058;
+  --chart-1: #e07058;
   --chart-2: var(--brand-gold);
-  --chart-3: #5b7bff;
-  --chart-4: #f7f5f2;
-  --chart-5: #4fb3a5;
-  --sidebar: #17171c;
-  --sidebar-foreground: #f7f5f2;
-  --sidebar-primary: #ff4438;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #251b1c;
-  --sidebar-accent-foreground: #f7f5f2;
-  --sidebar-border: #ffffff1a;
-  --sidebar-ring: #ff4438;
+  --chart-3: #7d95ff;
+  --chart-4: #f4eee6;
+  --chart-5: #5cc4b5;
+  --sidebar: #1b1815;
+  --sidebar-foreground: #f4eee6;
+  --sidebar-primary: #e07058;
+  --sidebar-primary-foreground: #1b1210;
+  --sidebar-accent: #2a241f;
+  --sidebar-accent-foreground: #f4eee6;
+  --sidebar-border: #322c26;
+  --sidebar-ring: #e07058;
+
+  --soft-shadow-sm:
+    0 1px 1px rgb(0 0 0 / 0.3), 0 3px 6px -3px rgb(0 0 0 / 0.4),
+    0 12px 26px -18px rgb(0 0 0 / 0.6),
+    inset 0 1px 0 rgb(255 255 255 / 0.05);
+  --soft-shadow:
+    0 1px 2px rgb(0 0 0 / 0.32), 0 6px 14px -6px rgb(0 0 0 / 0.38),
+    0 28px 52px -30px rgb(0 0 0 / 0.7),
+    inset 0 1px 0 rgb(255 255 255 / 0.06);
+  --soft-shadow-lg:
+    0 2px 6px rgb(0 0 0 / 0.35), 0 10px 22px -10px rgb(0 0 0 / 0.42),
+    0 46px 84px -42px rgb(0 0 0 / 0.8),
+    inset 0 1px 0 rgb(255 255 255 / 0.07);
+  --soft-inset-soft:
+    inset 3px 3px 8px rgb(0 0 0 / 0.42),
+    inset -2px -2px 7px rgb(255 255 255 / 0.035);
+  --soft-inset-deep:
+    inset 4px 4px 11px rgb(0 0 0 / 0.5),
+    inset -3px -3px 9px rgb(255 255 255 / 0.04);
+  --soft-shadow-glow:
+    0 0 0 1px rgb(224 112 88 / 0.16), 0 24px 48px -18px rgb(224 112 88 / 0.38);
+
+  --soft-wash: rgb(255 255 255 / 0.035);
+  --soft-glow-gold: rgb(232 182 76 / 0.1);
+  --soft-glow-rose: rgb(224 112 88 / 0.12);
+  --soft-glow-blue: rgb(91 123 255 / 0.1);
 }
 
 @layer base {
@@ -150,11 +221,25 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     /* With viewport-fit=cover the page draws under the notch and the home
        indicator. These keep content off both. */
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
+  }
+  /* Soft UI is editorial as much as tactile: headings wrap in balanced lines
+     rather than leaving one orphaned word, and running copy avoids rivers. */
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
   }
   button:not([disabled]),
   [role="button"]:not([disabled]) {
@@ -163,6 +248,69 @@
 }
 
 @layer components {
+  /*
+    The page canvas.
+
+    A flat fill makes every raised surface look like a cut-out; a barely-there
+    wash of the brand colours behind it gives the soft shadows something to
+    fall onto without becoming a gradient background. Applied at the root of
+    full-page screens, not globally, so maps and full-bleed media stay clean.
+  */
+  .soft-canvas {
+    background-color: var(--background);
+    background-image:
+      linear-gradient(180deg, var(--soft-wash) 0, transparent 24rem),
+      radial-gradient(
+        38rem 38rem at 112% -8%,
+        var(--soft-glow-gold),
+        transparent 62%
+      ),
+      radial-gradient(
+        32rem 32rem at -12% 4%,
+        var(--soft-glow-rose),
+        transparent 60%
+      ),
+      radial-gradient(
+        42rem 42rem at 50% 118%,
+        var(--soft-glow-blue),
+        transparent 66%
+      );
+    background-repeat: no-repeat;
+  }
+
+  /*
+    A top-left sheen for raised surfaces.
+
+    Unlike a glass highlight, this never sits over artwork or a photograph: it
+    is the light a matte sheet catches, applied as a background image over the
+    card colour. Pair it with `bg-card` and `shadow-soft`, not with a gradient
+    of its own.
+  */
+  .soft-sheen {
+    background-image: linear-gradient(
+      155deg,
+      rgb(255 255 255 / 0.5) 0%,
+      rgb(255 255 255 / 0) 44%
+    );
+  }
+  .dark .soft-sheen {
+    background-image: linear-gradient(
+      155deg,
+      rgb(255 255 255 / 0.045) 0%,
+      rgb(255 255 255 / 0) 48%
+    );
+  }
+
+  /*
+    A sunken surface, for wells that hold content rather than acting on it:
+    fare summaries, chat logs, grouped list backgrounds. Softer than a border,
+    which is the point — the inset is the edge.
+  */
+  .soft-well {
+    background-color: color-mix(in oklab, var(--muted) 72%, transparent);
+    box-shadow: var(--soft-inset-soft);
+  }
+
   /*
     Safe-area helpers.
 
@@ -186,18 +334,20 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
   /* Content that scrolls under the tab bar needs the extra height, not just
-     padding, or the last card is unreachable behind it. */
+     padding, or the last card is unreachable behind it. 5rem clears the 3.5rem
+     dock plus its 0.5rem bottom margin, and leaves a little air. */
   .safe-bottom-offset.safe-bottom-offset {
-    padding-bottom: calc(env(safe-area-inset-bottom) + 4.5rem);
+    padding-bottom: calc(env(safe-area-inset-bottom) + 5rem);
   }
   /* A sticky action bar (the Request button) has to park above the tab bar, not
      behind it. Sticky offsets resolve against the viewport, so the tab bar
-     height and the home indicator both have to be added in. 3.5rem is the bar's
-     height in BottomTabs.tsx — the two must be changed together.
+     height and the home indicator both have to be added in. 4rem is the dock's
+     height (3.5rem) plus the 0.5rem gap the floating dock leaves below it — the
+     two must be changed together.
 
      BottomTabs is rendered at every breakpoint (AppShell has no lg split), so
      there is no width at which the bar can sit flush with the viewport bottom. */
   .above-tabs {
-    bottom: calc(3.5rem + env(safe-area-inset-bottom));
+    bottom: calc(4rem + env(safe-area-inset-bottom));
   }
 }

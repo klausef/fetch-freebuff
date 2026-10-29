@@ -1226,7 +1226,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
         {/* Panel */}
         {/* On a phone the panel is a sheet that rides up over the map, the way a
             native booking app does it; from sm up it is a plain column again. */}
-        <div className="order-2 relative z-10 -mt-4 rounded-t-3xl bg-background px-4 pb-2 pt-4 shadow-[0_-10px_30px_-14px_rgba(0,0,0,0.3)] sm:mt-0 sm:rounded-none sm:bg-transparent sm:p-0 sm:shadow-none lg:order-1">
+        <div className="relative z-10 order-2 -mt-4 rounded-t-[2rem] border-t border-white/60 bg-card/95 px-4 pt-4 pb-2 shadow-[0_-18px_40px_-28px_rgb(86_62_45/0.45)] backdrop-blur-md sm:mt-0 sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none sm:backdrop-blur-none dark:border-white/[0.07] lg:order-1">
           {/*
             GPS could not do its job. Says what happened and, more importantly,
             what to do instead — the booking below still works with a typed or
@@ -1237,7 +1237,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
             because this is the state where a person is actually worried about
             their location; buried under a crosshair it would go unread.
         */}              {here.notice ? (
-            <div className="mb-3 rounded-lg border border-border bg-card px-3.5 py-3">
+            <div className="mb-3 rounded-[1.25rem] border border-white/60 bg-card/85 px-3.5 py-3 shadow-soft-sm dark:border-white/[0.07]">
               <div className="flex gap-3">
                 <AlertCircle className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
                 <div className="min-w-0 space-y-2">
@@ -1272,7 +1272,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
               request would be worse than telling them the truth and letting
               them decide. */}
           {pickup && !isInServiceArea(pickup) ? (
-            <div className="mb-3 flex gap-3 rounded-lg border border-fetch-gold bg-fetch-gold/25 px-3.5 py-2.5">
+            <div className="mb-3 flex gap-3 rounded-2xl border border-fetch-gold/50 bg-fetch-gold/20 px-3.5 py-2.5 shadow-soft-sm">
               <MapPin className="mt-0.5 size-4 shrink-0 text-fetch-ink" />
               <p className="text-xs leading-5 text-foreground">
                 This pickup is outside our service area. Riders are on the road
@@ -1283,18 +1283,18 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
           ) : null}
 
           {liveRide ? (
-            <section className="rounded-2xl border border-border/70 bg-card p-4 sm:p-5">
+            <section className="rounded-[1.75rem] border border-white/60 bg-card/90 p-4 shadow-soft-lg backdrop-blur-sm dark:border-white/[0.07] dark:bg-card/75 sm:p-5">
               <div className="flex items-center justify-between">
                 <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                   {liveRide.code}
                 </p>
-                <span className="rounded-full border border-border px-2 py-0.5 text-[10px] uppercase tracking-[0.14em]">
+                <span className="rounded-full border border-white/60 bg-card/60 px-2.5 py-0.5 text-[10px] tracking-[0.14em] uppercase shadow-soft-sm dark:border-white/[0.07]">
                   {STATUS_LABEL[liveRide.status]}
                 </span>
               </div>
 
               {liveRide.status === "SEARCHING" ? (
-                <div className="mt-4 flex items-center gap-3 rounded-lg border border-dashed border-border px-3.5 py-3.5">
+                <div className="mt-4 flex items-center gap-3 rounded-2xl border border-dashed border-white/60 bg-muted/40 px-3.5 py-3.5 shadow-inset-soft dark:border-white/[0.08]">
                   <Loader2 className="size-4 animate-spin text-muted-foreground" />
                   <div>
                     <p className="text-sm font-medium tracking-tight">
@@ -1306,7 +1306,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                   </div>
                 </div>
               ) : active?.counterparty ? (
-                <div className="mt-4 rounded-xl bg-muted/60 p-4">
+                <div className="mt-4 rounded-2xl bg-muted/60 p-4 shadow-inset-soft">
                   <div className="flex items-center justify-between gap-3">
                     {/* The rider's own photo from their profile, so the person at
                         the kerb can be recognised before they are near enough to
@@ -1439,7 +1439,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                  disagree with what the rider is about to see.
                */}
               {liveRide && liveRide.passengerType === "other" ? (
-                <div className="mt-4 rounded-xl border border-border bg-card p-4">
+                <div className="mt-4 rounded-[1.25rem] border border-white/60 bg-card/80 p-4 shadow-soft-sm dark:border-white/[0.07]">
                   <div className="flex items-center gap-2">
                     <User className="size-3.5 text-muted-foreground" />
                     <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
@@ -1457,7 +1457,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
               ) : null}
 
               {liveRide.bookingType && liveRide.bookingType !== "ride" ? (
-                <div className="mt-4 rounded-xl bg-muted/60 p-4">
+                <div className="mt-4 rounded-2xl bg-muted/60 p-4 shadow-inset-soft">
                   <div className="flex items-center gap-2">
                     <ShoppingBasket className="size-3.5 text-muted-foreground" />
                     <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
@@ -1567,7 +1567,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
               )}
             </section>
           ) : showReceipt && receipt ? (
-            <section className="rounded-2xl border border-border/70 bg-card p-4 sm:p-5">
+            <section className="rounded-[1.75rem] border border-white/60 bg-card/90 p-4 shadow-soft-lg backdrop-blur-sm dark:border-white/[0.07] dark:bg-card/75 sm:p-5">
               <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                 {receipt.ride.code}
               </p>
@@ -1582,7 +1582,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                   : "This ride was cancelled and you were not charged."}
               </p>
 
-              <div className="mt-5 rounded-xl bg-muted/60 p-4">
+              <div className="mt-5 rounded-2xl bg-muted/60 p-4 shadow-inset-soft">
                 <div className="flex items-baseline justify-between">
                   <span className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
                     {receipt.ride.status !== "COMPLETED"
@@ -1646,7 +1646,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                   finished ride is the only place a rating belongs. */}
               {receipt.ride.status === "COMPLETED" &&
               receipt.ride.riderId ? (
-                <div className="mt-4 rounded-xl bg-muted/60 p-4">
+                <div className="mt-4 rounded-2xl bg-muted/60 p-4 shadow-inset-soft">
                   <p className="text-sm font-medium tracking-tight">
                     How was your ride?
                   </p>
@@ -1665,7 +1665,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
               </Button>
             </section>
           ) : (
-            <section className="rounded-2xl border border-border/70 bg-card p-4 sm:p-5">
+            <section className="rounded-[1.75rem] border border-white/60 bg-card/90 p-4 shadow-soft-lg backdrop-blur-sm dark:border-white/[0.07] dark:bg-card/75 sm:p-5">
               <h2 className="text-lg font-semibold tracking-tight">
                 {TYPE_TITLE[bookingType]}
               </h2>
@@ -1678,7 +1678,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                   Riding somewhere, or sending a rider to buy or fetch
                   something? Pick a type below.
                 </p>
-                <div className="mt-4 grid grid-cols-3 gap-1 rounded-lg border border-border p-1">
+                <div className="mt-4 grid grid-cols-3 gap-1 rounded-full border border-white/60 bg-muted/60 p-1 shadow-inset-soft dark:border-white/[0.06]">
                   {BOOKING_TYPES.map((type) => (
                     <button
                       key={type}
@@ -1689,10 +1689,10 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                         // after the header, and at py-1.5 it was ~26px tall —
                         // half the 44px minimum, which on a phone means
                         // mistapping the service you are about to order.
-                        "min-h-11 rounded-md px-2 text-sm font-medium tracking-tight transition-colors",
+                        "min-h-11 rounded-full px-2 text-sm font-medium tracking-tight transition-all duration-200",
                         bookingType === type
-                          ? "bg-primary text-primary-foreground"
-                          : "text-muted-foreground hover:text-foreground",
+                          ? "bg-primary text-primary-foreground shadow-soft-sm"
+                          : "text-muted-foreground hover:bg-foreground/[0.04] hover:text-foreground",
                       )}
                     >
                       {TYPE_LABEL[type]}
@@ -1794,8 +1794,8 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                       destination is chosen the search box is full of text and a
                       list of five other addresses underneath it is noise. */}
                   {recents.rows.length > 0 && !destination ? (
-                    <div className="rounded-lg border border-border">
-                      <div className="flex items-center justify-between border-b border-border px-3 py-2">
+                    <div className="rounded-[1.25rem] border border-white/60 bg-card/60 shadow-soft-sm dark:border-white/[0.07]">
+                      <div className="flex items-center justify-between border-b border-white/50 px-3 py-2 dark:border-white/[0.06]">
                         <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
                           Recent
                         </p>
@@ -1887,7 +1887,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                       {savedPlaces.map((place) => (
                         <li
                           key={place._id}
-                          className="flex items-center gap-3 rounded-lg border border-border px-3 py-2"
+                          className="flex items-center gap-3 rounded-2xl border border-white/60 bg-card/60 px-3 py-2 shadow-soft-sm dark:border-white/[0.07]"
                         >
                           <button
                             type="button"
@@ -1933,7 +1933,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                 </div>
 
                 {isErrand ? (
-                  <div className="space-y-3 rounded-xl bg-muted/60 p-3.5">
+                  <div className="space-y-3 rounded-2xl bg-muted/60 p-3.5 shadow-inset-soft">
                     <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
                       {copy.list}
                     </p>
@@ -2089,7 +2089,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                   type="button"
                   onClick={() => setScheduleFor((prev) => (prev ? "" : "soon"))}
                   aria-pressed={Boolean(scheduleFor)}
-                  className="flex min-h-11 w-full items-center justify-between gap-3 rounded-xl border border-border px-3 py-2.5 text-left transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  className="flex min-h-11 w-full items-center justify-between gap-3 rounded-[1.25rem] border border-white/60 bg-card/70 px-3 py-2.5 text-left shadow-soft-sm transition-all hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:border-white/[0.07]"
                 >
                   <span>
                     <span className="block text-sm font-medium tracking-tight">
@@ -2126,7 +2126,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                           onClick={() =>
                             setScheduleFor(slot === "soon" ? "soon" : slot)
                           }
-                          className="min-h-9 rounded-full border border-border px-3 text-xs font-medium tracking-tight transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                          className="min-h-9 rounded-full border border-white/60 bg-card/60 px-3 text-xs font-medium tracking-tight shadow-soft-sm transition-colors hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:border-white/[0.07]"
                         >
                           {slot === "soon" ? "In 1 hour" : String(slot).replace("T", " · ")}
                         </button>
@@ -2315,7 +2315,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                   {/* Pinned to the bottom of the panel: on a phone the form is
                       long and the map sits above it, so a CTA at the end of the
                       document was a scroll away from the last thing you set. */}
-                  <div className="above-tabs sticky z-20 -mx-4 mt-4 border-t border-border bg-background/95 px-4 py-2.5 backdrop-blur sm:-mx-5 sm:px-5">
+                  <div className="above-tabs sticky z-20 -mx-4 mt-4 border-t border-white/50 bg-background/80 px-4 py-2.5 shadow-[0_-1px_0_rgb(255_255_255/0.4)] backdrop-blur-xl sm:-mx-5 sm:px-5 dark:border-white/[0.06]">
                     <div className="flex items-center justify-between gap-4">
                       <div className="min-w-0">
                         <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
@@ -2364,7 +2364,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                   </div>
                 </>
               ) : (
-                <div className="rounded-lg border border-dashed border-border px-4 py-5 text-center">
+                <div className="rounded-[1.5rem] border border-dashed border-white/60 bg-card/50 px-4 py-5 text-center shadow-inset-soft dark:border-white/[0.08]">
                   <Search className="mx-auto size-4 text-muted-foreground" />
                   <p className="mt-3 text-sm font-medium tracking-tight">
                     {isErrand ? "Where should your rider go?" : "Where are you going?"}
@@ -2384,7 +2384,8 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
         <div className="order-1 lg:order-2" ref={mapWrapRef}>
           {/* Edge-to-edge on a phone, boxed from sm up: a map inset in page
               padding reads as a web widget, not as the app's main surface. */}
-          <div className="relative -mx-4 overflow-hidden border-b border-border sm:mx-0 sm:rounded-2xl sm:border lg:border">              <MapView
+          <div className="relative -mx-4 overflow-hidden border-b border-white/50 shadow-[0_18px_30px_-24px_rgb(86_62_45/0.4)] sm:mx-0 sm:rounded-[1.75rem] sm:border sm:border-white/60 sm:shadow-soft-lg dark:border-white/[0.07]">
+            <MapView
               center={center}
               zoom={zoom}
               markers={markers}
@@ -2417,7 +2418,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
               className="h-[42dvh] min-h-[240px] w-full sm:h-[42vh] lg:h-[calc(100vh-8rem)]"
             />
             {!liveRide ? (
-              <div className="pointer-events-none absolute left-3 top-3 flex items-center gap-2 rounded-full border border-border bg-background/90 px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-muted-foreground backdrop-blur">
+              <div className="pointer-events-none absolute top-3 left-3 flex items-center gap-2 rounded-full border border-white/60 bg-card/85 px-3 py-1.5 text-[10px] tracking-[0.14em] text-muted-foreground uppercase shadow-soft-sm backdrop-blur dark:border-white/[0.07]">
                 <Crosshair className="size-3" />
                 {dragPoint
                   ? "Drag the pin to adjust"
@@ -2427,7 +2428,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
               </div>
             ) : null}
             {liveRide && !riderLocation && liveRide.status !== "SEARCHING" ? (
-              <div className="pointer-events-none absolute left-3 top-3 rounded-full border border-border bg-background/90 px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-muted-foreground backdrop-blur">
+              <div className="pointer-events-none absolute top-3 left-3 rounded-full border border-white/60 bg-card/85 px-3 py-1.5 text-[10px] tracking-[0.14em] text-muted-foreground uppercase shadow-soft-sm backdrop-blur dark:border-white/[0.07]">
                 Waiting for rider GPS…
               </div>
             ) : null}
@@ -2439,7 +2440,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                 It reads the same numbers the fare is priced on, so the map and
                 the quote cannot disagree. */}
             {pickup && destination && !liveRide ? (
-              <div className="pointer-events-none absolute bottom-9 left-3 z-10 flex items-center gap-2 rounded-full border border-border bg-background/90 px-3 py-1.5 text-[11px] tracking-tight shadow-sm backdrop-blur">
+              <div className="pointer-events-none absolute bottom-9 left-3 z-10 flex items-center gap-2 rounded-full border border-white/60 bg-card/85 px-3 py-1.5 text-[11px] tracking-tight shadow-soft-sm backdrop-blur dark:border-white/[0.07]">
                 <Navigation className="size-3" aria-hidden />
                 <span className="font-medium tabular-nums">
                   {formatDistance(distanceKm)}
@@ -2469,7 +2470,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                 openStep("destination");
               }}
               aria-label="Search for a destination"
-              className="absolute bottom-9 right-3 z-10 flex size-11 items-center justify-center rounded-full border border-border bg-background/95 text-foreground shadow-sm backdrop-blur transition active:bg-secondary sm:size-10"
+              className="absolute bottom-9 right-3 z-10 flex size-11 items-center justify-center rounded-full border border-white/70 bg-card/90 text-foreground shadow-soft-sm backdrop-blur transition hover:bg-card active:shadow-inset-soft sm:size-10 dark:border-white/[0.08]"
             >
               <Search className="size-5 sm:size-4" />
             </button>
@@ -2490,7 +2491,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                   const isActive = end === target;
                   const address = point.address ?? (isActive ? geocoded.address : null);
                   return (
-                    <div className="absolute inset-x-3 bottom-20 z-20 rounded-xl border border-border bg-background/95 p-3 shadow-lg backdrop-blur">
+                    <div className="absolute inset-x-3 bottom-20 z-20 rounded-[1.5rem] border border-white/60 bg-card/95 p-3 shadow-soft-lg backdrop-blur dark:border-white/[0.07]">
                       <div className="flex items-start gap-2">
                         <div className="min-w-0 flex-1">
                           <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
@@ -2555,7 +2556,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
           </SheetHeader>
           {booked?.ride ? (
             <div className="space-y-4 pt-2">
-              <div className="flex items-center gap-2 rounded-lg border border-border bg-secondary/50 p-3">
+              <div className="flex items-center gap-2 rounded-2xl border border-white/50 bg-secondary/50 p-3 shadow-inset-soft dark:border-white/[0.06]">
                 <Check className="size-5 shrink-0 text-primary" aria-hidden />
                 <p className="text-xs leading-5">
                   Ride{" "}

@@ -29,7 +29,7 @@ export default function Onboarding() {
 
   if (profile === undefined || !resolved) {
     return (
-      <main className="flex min-h-dvh items-center justify-center bg-background">
+      <main className="soft-canvas flex min-h-dvh items-center justify-center">
         <Loader2 className="size-5 animate-spin text-muted-foreground" />
       </main>
     );
@@ -69,10 +69,12 @@ export default function Onboarding() {
     // pb is an explicit calc rather than `safe-bottom` + `py-10`: the safe-area
     // helpers set padding outright, so pairing them with a padding shorthand
     // means one of the two silently loses.
-    <main className="flex min-h-dvh items-center justify-center bg-background px-4 pt-10 pb-[calc(2.5rem+env(safe-area-inset-bottom))] sm:pb-12">
+    <main className="soft-canvas flex min-h-dvh items-center justify-center px-4 pt-10 pb-[calc(2.5rem+env(safe-area-inset-bottom))] sm:pb-12">
       <div className="w-full max-w-lg">
         <div className="mb-6 flex items-center justify-between gap-3">
-          <FetchBrand size="md" />
+          <div className="rounded-full border border-border/50 bg-card/85 p-1 pr-3 shadow-soft-sm backdrop-blur-md dark:border-white/10 dark:bg-card/55">
+            <FetchBrand size="sm" />
+          </div>
           <div className="flex items-center gap-1">
             {/* The language pill lives here as well as in the app header,
                 because onboarding is the first signed-in screen and somebody
@@ -104,7 +106,7 @@ export default function Onboarding() {
               path is `/rider/register`, and it asks for a vehicle before it
               sends an application; a role picker here could only ever produce a
               rider with no vehicle. */}
-          <div className="flex items-start gap-3 rounded-xl border border-border bg-secondary/40 p-4">
+          <div className="flex items-start gap-3 rounded-[1.5rem] border border-border/45 bg-secondary/50 p-4 shadow-inset-soft dark:border-white/[0.07]">
             <MapPin className="mt-0.5 size-4 shrink-0" />
             <div>
               <p className="text-sm font-medium tracking-tight">
@@ -159,7 +161,7 @@ export default function Onboarding() {
             would otherwise have no route to `/rider/register`. */}
         <Link
           to="/rider/register"
-          className="mt-6 block rounded-xl border border-border p-4 transition-colors hover:border-foreground/40"
+          className="soft-sheen mt-6 block rounded-[1.5rem] border border-border/50 bg-card p-4 shadow-soft-sm transition-all hover:-translate-y-px hover:shadow-soft dark:border-white/[0.07] dark:bg-card/85"
         >
           <p className="text-sm font-medium tracking-tight">
             {t("onboarding", "driveWithUs")}

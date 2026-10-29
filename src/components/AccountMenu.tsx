@@ -49,7 +49,7 @@ export function AccountMenu() {
           type="button"
           aria-label={t("account", "openMenu")}
           onClick={() => setOpen(true)}
-          className="flex size-11 cursor-pointer items-center justify-center rounded-full border border-border/70 bg-secondary text-sm font-semibold text-foreground transition-colors hover:border-primary/50"
+          className="flex size-11 cursor-pointer items-center justify-center rounded-full border border-border/45 bg-secondary text-sm font-semibold text-foreground shadow-soft-sm transition-all hover:-translate-y-px hover:shadow-soft dark:border-white/10"
         >
           {initialsFor(displayName)}
         </button>

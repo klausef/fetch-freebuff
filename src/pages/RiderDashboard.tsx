@@ -380,7 +380,7 @@ export default function RiderDashboard() {
               below the fold on the screen whose whole job is the next request. */}
 
           {/* Availability switch. */}
-          <section className="rounded-2xl border border-border/70 bg-card p-4 sm:p-5">
+          <section className="rounded-[1.75rem] border border-white/60 bg-card/90 p-4 shadow-soft backdrop-blur-sm dark:border-white/[0.07] dark:bg-card/75 sm:p-5">
             <button
               type="button"
               disabled={!hasVehicle || hasRide}
@@ -388,8 +388,8 @@ export default function RiderDashboard() {
               className={cn(
                 "flex w-full items-center justify-between gap-3 rounded-2xl px-4 py-4 text-left transition",
                 rider.isOnline
-                  ? "bg-emerald-600 text-white shadow-sm"
-                  : "bg-muted text-foreground",
+                  ? "bg-linear-to-b from-emerald-500 to-emerald-700 text-white shadow-soft-sm"
+                  : "bg-muted text-foreground shadow-inset-soft",
                 (!hasVehicle || hasRide) && "cursor-not-allowed opacity-60",
               )}
             >
@@ -397,7 +397,9 @@ export default function RiderDashboard() {
                 <span
                   className={cn(
                     "flex size-10 items-center justify-center rounded-full",
-                    rider.isOnline ? "bg-white/20" : "bg-background",
+                    rider.isOnline
+                      ? "bg-white/20"
+                      : "border border-white/60 bg-card shadow-soft-sm dark:border-white/10",
                   )}
                 >
                   <Power className="size-5" />
@@ -421,12 +423,14 @@ export default function RiderDashboard() {
               <span
                 className={cn(
                   "relative h-7 w-12 shrink-0 rounded-full transition-colors",
-                  rider.isOnline ? "bg-white/30" : "bg-border",
+                  rider.isOnline
+                    ? "bg-white/30"
+                    : "bg-muted shadow-inset-soft",
                 )}
               >
                 <span
                   className={cn(
-                    "absolute top-1 size-5 rounded-full bg-white shadow transition-all",
+                    "absolute top-1 size-5 rounded-full bg-white shadow-soft-sm transition-all",
                     rider.isOnline ? "left-6" : "left-1",
                   )}
                 />
@@ -463,7 +467,7 @@ export default function RiderDashboard() {
 
           {/* Requests list. The modal takes the nearest one; this is the rest,
               so a rider who declines can still see what else is around. */}
-          <section className="rounded-2xl border border-border/70 bg-card p-4 sm:p-5">
+          <section className="rounded-[1.75rem] border border-white/60 bg-card/90 p-4 shadow-soft backdrop-blur-sm dark:border-white/[0.07] dark:bg-card/75 sm:p-5">
             {!rider.isOnline ? (
               <p className="mt-4 text-xs leading-5 text-muted-foreground">
                 Go online to start receiving ride requests.

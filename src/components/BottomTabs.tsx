@@ -33,8 +33,8 @@ export function BottomTabs({
   const list = tabs ?? roleTabs(role, hasActiveRide);
 
   return (
-    <nav className="safe-bottom fixed inset-x-0 bottom-0 z-40 border-t border-border/70 bg-background/95 backdrop-blur">
-      <div className="mx-auto flex h-14 w-full max-w-lg items-stretch justify-around px-1">
+    <nav className="safe-bottom fixed inset-x-0 bottom-0 z-40 px-3">
+      <div className="soft-sheen mx-auto mb-2 flex h-14 w-full max-w-lg items-stretch justify-around rounded-full border border-border/55 bg-card/92 p-1 shadow-soft-lg backdrop-blur-xl dark:border-white/[0.08] dark:bg-card/80">
         {list.map((tab) => {
           const Icon = tab.icon;
           return (
@@ -45,16 +45,41 @@ export function BottomTabs({
               className={({ isActive }) =>
                 cn(
                   // A full-height cell, so the whole tab is tappable and not
-                  // just the glyph.
-                  "flex min-w-16 flex-1 cursor-pointer flex-col items-center justify-center gap-0.5 px-2 text-[11px] font-medium tracking-tight transition-colors",
+                  // just the glyph. The active state is a raised icon chip: at
+                  // a glance it reads as the one control standing proud of the
+                  // sunken dock.
+                  "flex min-w-16 flex-1 cursor-pointer flex-col items-center justify-center gap-0.5 rounded-full px-2 text-[11px] font-medium tracking-tight transition-colors",
                   isActive || tab.key === activeKey
-                    ? "text-primary"
+                    ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground",
                 )
               }
             >
-              <Icon className="size-5" aria-hidden="true" />
-              <span>{t("nav", tab.labelKey)}</span>
+              {({ isActive }) => {
+                const active = isActive || tab.key === activeKey;
+                return (
+                  <>
+                    <span
+                      className={cn(
+                        "flex size-7 items-center justify-center rounded-full transition-all duration-200",
+                        active
+                          ? "bg-primary text-primary-foreground shadow-soft-sm"
+                          : "text-muted-foreground",
+                      )}
+                    >
+                      <Icon className="size-[18px]" aria-hidden="true" />
+                    </span>
+                    <span
+                      className={cn(
+                        "transition-colors",
+                        active ? "text-foreground" : "text-muted-foreground",
+                      )}
+                    >
+                      {t("nav", tab.labelKey)}
+                    </span>
+                  </>
+                );
+              }}
             </NavLink>
           );
         })}

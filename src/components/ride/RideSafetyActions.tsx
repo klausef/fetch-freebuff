@@ -124,7 +124,7 @@ export function RideSafetyActions({
 
           <div className="space-y-3 pb-2">
             {emergencyName && emergencyPhone ? (
-              <div className="rounded-xl border border-border p-4">
+              <div className="rounded-[1.25rem] border border-border/50 bg-card/70 p-4 shadow-soft-sm dark:border-white/[0.07]">
                 <p className="text-sm font-medium tracking-tight">
                   Message {emergencyName}
                 </p>

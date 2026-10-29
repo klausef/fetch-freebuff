@@ -14,7 +14,7 @@ export default function Dashboard() {
   };
 
   return (
-    <main className="min-h-screen bg-background px-6 py-10 text-foreground">
+    <main className="soft-canvas min-h-screen px-6 py-10 text-foreground">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-8">
         <header className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -36,9 +36,9 @@ export default function Dashboard() {
           </Button>
         </header>
 
-        <Card className="border-border/70 shadow-none">
+        <Card>
           <CardHeader>
-            <div className="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <div className="mb-3 flex size-10 items-center justify-center rounded-2xl border border-border/45 bg-primary/10 text-primary shadow-soft-sm dark:border-white/[0.07]">
               <LayoutDashboard className="size-5" />
             </div>
             <CardTitle>Your dashboard is ready</CardTitle>

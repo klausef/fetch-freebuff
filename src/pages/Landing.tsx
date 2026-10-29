@@ -102,12 +102,7 @@ function WelcomeScene() {
       />
 
       {/* Motion lines trailing the parcels */}
-      <g
-        stroke="#ffc72c"
-        strokeWidth="7"
-        strokeLinecap="round"
-        opacity="0.7"
-      >
+      <g stroke="#ffc72c" strokeWidth="7" strokeLinecap="round" opacity="0.7">
         <line x1="86" y1="118" x2="122" y2="118" />
         <line x1="76" y1="140" x2="118" y2="140" />
         <line x1="88" y1="162" x2="112" y2="162" />
@@ -167,20 +162,41 @@ export default function Landing() {
   }, [api]);
 
   return (
-    <div className="safe-bottom flex min-h-dvh flex-col bg-background text-foreground">
+    <div className="soft-canvas safe-bottom relative isolate flex min-h-dvh flex-col overflow-hidden text-foreground">
+      {/* Ambient colour. The glow behind the artwork is what makes the frame
+          feel lit rather than pasted on. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
+      >
+        <div className="absolute -top-40 -left-32 size-[30rem] rounded-full bg-[radial-gradient(circle_at_center,rgb(232_182_76/0.3),transparent_65%)] blur-3xl" />
+        <div className="absolute -top-24 -right-32 size-[28rem] rounded-full bg-[radial-gradient(circle_at_center,rgb(168_67_47/0.22),transparent_65%)] blur-3xl" />
+        <div className="absolute -bottom-48 left-1/4 size-[34rem] rounded-full bg-[radial-gradient(circle_at_center,rgb(46_58_140/0.15),transparent_65%)] blur-3xl" />
+      </div>
+
       {/* Brand + language */}
-      <header className="safe-top">
-        <div className="mx-auto flex w-full max-w-md items-start justify-between px-5 pt-5 sm:px-6">
-          <FetchBrand size="lg" showWordmark={false} />
+      <header className="safe-top relative">
+        <div className="mx-auto flex w-full max-w-md items-center justify-between gap-3 px-5 pt-6 sm:max-w-xl sm:px-8 lg:max-w-2xl">
+          <div className="rounded-full border border-border/50 bg-card/85 p-1 pr-4 shadow-soft-sm backdrop-blur-xl dark:border-white/10 dark:bg-card/55">
+            <FetchBrand size="sm" />
+          </div>
           {/* The language choice lives on the welcome screen as well as
               inside the app: somebody who cannot read this page cannot get as
               far as the header to change it. */}
-          <LocaleSwitcher className="mt-1" />
+          <LocaleSwitcher />
         </div>
       </header>
 
       {/* Welcome carousel */}
-      <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-5 py-8 sm:px-6">
+      <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-5 py-9 sm:max-w-xl sm:px-8 lg:max-w-2xl">
+        <p className="mb-6 flex items-center justify-center gap-2 text-center text-[10px] leading-5 font-semibold tracking-[0.18em] text-muted-foreground uppercase">
+          <span
+            aria-hidden="true"
+            className="size-1.5 shrink-0 rounded-full bg-fetch-gold shadow-[0_0_0_4px_rgb(232_182_76/0.18)]"
+          />
+          {t("landing", "tagline")}
+        </p>
+
         <Carousel
           setApi={setApi}
           className="w-full"
@@ -191,47 +207,69 @@ export default function Landing() {
               const title = t("landing", slide.titleKey);
               const body = t("landing", slide.bodyKey);
               return (
-              <CarouselItem
-                key={slide.titleKey}
-                className="flex flex-col items-center text-center"
-              >
-                {/* The illustration window. */}
-                <div className="relative aspect-video w-full overflow-hidden rounded-3xl bg-fetch-royal">
-                  {slide.image ? (
-                    <img
-                      src={slide.image}
-                      alt=""
-                      className="absolute inset-0 size-full object-cover"
-                      loading="lazy"
-                      decoding="async"
+                <CarouselItem
+                  key={slide.titleKey}
+                  className="flex flex-col items-center text-center"
+                >
+                  {/* The illustration window, framed as a raised card instead
+                      of a bare image. The 5:3 ratio matches the artwork, so
+                      nothing is cropped. */}
+                  <div className="relative w-full">
+                    <div
+                      aria-hidden="true"
+                      className="absolute -inset-5 -z-10 rounded-[3rem] bg-fetch-royal/10 blur-2xl"
                     />
+                    <div className="soft-sheen rounded-[2.4rem] border border-border/55 bg-card p-2 shadow-soft-lg dark:border-white/[0.08] dark:bg-card/85">
+                      <div className="relative aspect-[5/3] w-full overflow-hidden rounded-[1.7rem] bg-fetch-royal">
+                        {slide.image ? (
+                          <img
+                            src={slide.image}
+                            alt=""
+                            className="absolute inset-0 size-full object-cover"
+                            loading={index === 0 ? "eager" : "lazy"}
+                            fetchPriority={index === 0 ? "high" : "auto"}
+                            decoding="async"
+                          />
+                        ) : (
+                          <WelcomeScene />
+                        )}
+                        <div
+                          aria-hidden="true"
+                          className="pointer-events-none absolute inset-0 bg-linear-to-tr from-black/10 via-transparent to-white/20"
+                        />
+                        <span className="absolute bottom-3 left-3 inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/15 px-3 py-1 text-[10px] font-semibold tracking-[0.18em] text-white uppercase backdrop-blur-md">
+                          <span
+                            aria-hidden="true"
+                            className="size-1.5 rounded-full bg-fetch-gold"
+                          />
+                          Bukidnon
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  {/* One heading per page, not one per slide. Every slide is in
+                      the DOM at once, so four h1s would announce the same page
+                      title four times; the first slide is the page's heading and
+                      the rest are sections of the same idea. */}
+                  {index === 0 ? (
+                    <h1 className="mt-8 text-[2rem] leading-[1.08] font-bold tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem]">
+                      {title}
+                    </h1>
                   ) : (
-                    <WelcomeScene />
+                    <h2 className="mt-8 text-[2rem] leading-[1.08] font-bold tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem]">
+                      {title}
+                    </h2>
                   )}
-                </div>
-                {/* One heading per page, not one per slide. Every slide is in
-                    the DOM at once, so four h1s would announce the same page
-                    title four times; the first slide is the page's heading and
-                    the rest are sections of the same idea. */}
-                {index === 0 ? (
-                  <h1 className="mt-7 text-2xl font-bold tracking-tight text-fetch-maroon sm:text-3xl">
-                    {title}
-                  </h1>
-                ) : (
-                  <h2 className="mt-7 text-2xl font-bold tracking-tight text-fetch-maroon sm:text-3xl">
-                    {title}
-                  </h2>
-                )}
-                <p className="mt-3 max-w-xs text-[15px] leading-6 text-fetch-maroon/75 sm:max-w-sm sm:text-base sm:leading-7">
-                  {body}
-                </p>
-              </CarouselItem>
+                  <p className="mt-3 max-w-sm text-[15px] leading-7 text-muted-foreground sm:text-base">
+                    {body}
+                  </p>
+                </CarouselItem>
               );
             })}
           </CarouselContent>
         </Carousel>
 
-        <div className="mt-8 flex items-center justify-center gap-2.5">
+        <div className="mx-auto mt-8 flex w-fit items-center gap-1.5 rounded-full border border-border/45 bg-card/70 p-1.5 shadow-inset-soft dark:border-white/[0.07] dark:bg-card/50">
           {SLIDES.map((slide, index) => (
             <button
               key={slide.titleKey}
@@ -240,46 +278,48 @@ export default function Landing() {
               aria-current={current === index}
               onClick={() => api?.scrollTo(index)}
               className={cn(
-                "h-2 rounded-full transition-all duration-300",
+                "h-2.5 rounded-full transition-all duration-300 ease-soft",
                 current === index
-                  ? "w-8 bg-fetch-brick"
-                  : "w-2 bg-fetch-brick/25 hover:bg-fetch-brick/50",
+                  ? "w-8 bg-primary shadow-soft-sm"
+                  : "w-2.5 bg-muted-foreground/25 hover:bg-muted-foreground/40",
               )}
             />
           ))}
         </div>
       </main>
 
-      {/* Consent + entry */}
-      <footer className="mx-auto w-full max-w-md px-5 pb-5 sm:px-6">
-        <p className="text-center text-xs leading-5 text-fetch-maroon/75">
-          {t("landing", "consent")}{" "}
-          <span className="font-medium underline underline-offset-2">
-            {t("landing", "termOfService")}
-          </span>{" "}
-          &{" "}
-          <span className="font-medium underline underline-offset-2">
-            {t("landing", "privacyNotice")}
-          </span>
-          .
-        </p>
+      {/* Consent + entry, in a soft action dock */}
+      <footer className="mx-auto w-full max-w-md px-5 pb-6 sm:max-w-xl sm:px-8 lg:max-w-2xl">
+        <div className="soft-sheen rounded-[1.75rem] border border-border/55 bg-card/95 p-4 shadow-soft dark:border-white/[0.07] dark:bg-card/85 sm:p-5">
+          <div className="space-y-2.5 sm:grid sm:grid-cols-2 sm:gap-2.5 sm:space-y-0">
+            {/* Both doors lead into /auth: the email-code flow signs existing
+                users in and creates new accounts from the same form. */}
+            <Button
+              asChild
+              className="h-14 w-full rounded-full bg-linear-to-b from-fetch-brick to-fetch-red-deep text-[15px] font-semibold text-white shadow-soft hover:-translate-y-px hover:shadow-soft-lg active:translate-y-0 active:shadow-inset-soft"
+            >
+              <Link to="/auth">{t("landing", "cta")}</Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              className="h-14 w-full rounded-full border-border/55 bg-card text-[15px] font-semibold text-foreground shadow-soft-sm hover:-translate-y-px hover:shadow-soft active:translate-y-0 active:shadow-inset-soft dark:border-white/10 dark:bg-card/80"
+            >
+              <Link to="/auth">{t("landing", "ctaSignUp")}</Link>
+            </Button>
+          </div>
 
-        <div className="mt-4 space-y-3">
-          {/* Both doors lead into /auth: the email-code flow signs existing
-              users in and creates new accounts from the same form. */}
-          <Button
-            asChild
-            className="h-12 w-full rounded-full bg-fetch-brick text-base font-bold text-white hover:bg-fetch-brick/90 sm:h-12"
-          >
-            <Link to="/auth">{t("landing", "cta")}</Link>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            className="h-12 w-full rounded-full border-fetch-brick bg-background text-base font-bold text-fetch-brick hover:bg-fetch-brick/5 hover:text-fetch-brick sm:h-12"
-          >
-            <Link to="/auth">{t("landing", "ctaSignUp")}</Link>
-          </Button>
+          <p className="mt-4 text-center text-[11px] leading-5 text-muted-foreground">
+            {t("landing", "consent")}{" "}
+            <span className="font-medium text-foreground/75">
+              {t("landing", "termOfService")}
+            </span>{" "}
+            &{" "}
+            <span className="font-medium text-foreground/75">
+              {t("landing", "privacyNotice")}
+            </span>
+            .
+          </p>
 
           {/* Riders are a different door, not a bigger version of the same
               one: they have to go through approval before they can take a
@@ -287,10 +327,10 @@ export default function Landing() {
               leaving a driver to find it. A link rather than a third button,
               because it is the rarer of the two — the page should not give
               equal visual weight to signing up and to driving. */}
-          <p className="pt-1 text-center">
+          <p className="mt-1 text-center">
             <Link
               to="/rider/register"
-              className="text-sm font-medium text-fetch-maroon underline underline-offset-4 transition-colors hover:text-fetch-brick"
+              className="text-sm font-semibold text-primary underline-offset-4 transition-colors hover:text-primary/80 hover:underline"
             >
               {t("landing", "riderRegistration")}
             </Link>

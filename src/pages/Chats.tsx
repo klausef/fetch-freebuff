@@ -72,7 +72,7 @@ export default function Chats() {
         <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-5 sm:px-6 sm:py-6">
           <h2 className="text-sm font-semibold tracking-tight">Your chats</h2>
 
-          <div className="mt-3 overflow-hidden rounded-2xl border border-border">
+          <div className="mt-3 overflow-hidden rounded-[1.5rem] border border-white/60 bg-card/80 shadow-soft-sm dark:border-white/[0.07]">
             {threads === undefined ? (
               <div className="flex items-center justify-center py-12">
                 <Loader2 className="size-5 animate-spin text-muted-foreground" />

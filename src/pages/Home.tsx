@@ -10,7 +10,11 @@ import {
 } from "@/components/ui/sheet";
 import { api } from "@/convex/_generated/api";
 import { roleLabel } from "@/lib/account";
-import { isOngoingStatus, resolveBookingType, type BookingType } from "@/lib/booking";
+import {
+  isOngoingStatus,
+  resolveBookingType,
+  type BookingType,
+} from "@/lib/booking";
 import { bookUrl, type PickedPlace } from "@/lib/booking-url";
 import { DEFAULT_TARIFF, formatPeso, shortAddress } from "@/lib/geo";
 import { ServiceAreaSheet } from "@/components/ServiceAreaSheet";
@@ -32,7 +36,13 @@ import { useState } from "react";
 import { Link, Navigate, useSearchParams } from "react-router";
 
 /** The three services, as the wide cards the design leads with. */
-const SERVICES: { type: BookingType; label: string; hint: string; icon: LucideIcon; tile: string }[] = [
+const SERVICES: {
+  type: BookingType;
+  label: string;
+  hint: string;
+  icon: LucideIcon;
+  tile: string;
+}[] = [
   {
     type: "ride",
     label: "Ride",
@@ -47,7 +57,7 @@ const SERVICES: { type: BookingType; label: string; hint: string; icon: LucideIc
     icon: ShoppingBasket,
     // Gold is the one tile a white glyph would vanish into, so it takes the
     // ink from the crest's black rim instead.
-    tile: "bg-fetch-gold text-foreground",
+    tile: "bg-fetch-gold text-fetch-ink",
   },
   {
     type: "padala",
@@ -62,7 +72,8 @@ const SERVICES: { type: BookingType; label: string; hint: string; icon: LucideIc
 function savedPlaceIcon(label: string) {
   const key = label.trim().toLowerCase();
   if (key === "home") return <MapPin className="size-4" />;
-  if (key === "work" || key === "school") return <Briefcase className="size-4" />;
+  if (key === "work" || key === "school")
+    return <Briefcase className="size-4" />;
   return <MapPinned className="size-4" />;
 }
 
@@ -119,7 +130,9 @@ export default function Home() {
   // recent finished one, which is the drop-off someone is most likely to want.
   // Both ends come with it — a home-to-campus run repeated from the campus is
   // the whole point, and half a repeat is a trip that starts in the wrong place.
-  const lastFinished = (rides ?? []).find((ride) => !isOngoingStatus(ride.status));
+  const lastFinished = (rides ?? []).find(
+    (ride) => !isOngoingStatus(ride.status),
+  );
   const againLink = lastFinished
     ? bookUrl(
         (lastFinished.bookingType ?? "ride") as BookingType,
@@ -191,11 +204,11 @@ export default function Home() {
             <Link
               key={service.type}
               to={bookUrl(service.type, picked, pickup)}
-              className="rounded-2xl border border-border p-3 transition-colors hover:bg-secondary/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="soft-sheen rounded-[1.5rem] border border-border/55 bg-card p-3 shadow-soft-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:border-white/[0.07] dark:bg-card/85"
             >
               <span
                 className={cn(
-                  "flex size-11 items-center justify-center rounded-xl",
+                  "flex size-11 items-center justify-center rounded-2xl shadow-soft-sm",
                   service.tile,
                 )}
               >
@@ -216,7 +229,7 @@ export default function Home() {
         {liveRide ? (
           <Link
             to="/book"
-            className="mt-4 block rounded-3xl bg-fetch-ink p-5 text-white"
+            className="mt-4 block rounded-[1.75rem] border border-white/10 bg-fetch-ink p-5 text-white shadow-soft-lg dark:bg-[#221e1a]"
           >
             <p className="text-[10px] uppercase tracking-[0.16em] text-white/70">
               Trip in progress · {liveRide.code}
@@ -233,13 +246,13 @@ export default function Home() {
             </span>
           </Link>
         ) : (
-          <div className="mt-4 rounded-3xl bg-gradient-to-br from-fetch-red to-fetch-red-deep p-5 text-white">
+          <div className="mt-4 rounded-[1.75rem] border border-white/15 bg-linear-to-br from-fetch-red to-fetch-red-deep p-5 text-white shadow-soft-lg">
             <h2 className="text-2xl font-bold tracking-tight">
               Serving {REGION.name}
             </h2>
             <p className="mt-2 text-sm leading-6 text-white/85">
-              Rides, pasugo and pabili in {LIVE_CITY_NAMES.join(" and ")} —
-              and the fare is shown before you ever request.
+              Rides, pasugo and pabili in {LIVE_CITY_NAMES.join(" and ")} — and
+              the fare is shown before you ever request.
             </p>
             <Button
               asChild
@@ -251,7 +264,7 @@ export default function Home() {
         )}
 
         {/* Fares, from the live tariff rather than the shipped defaults. */}
-        <div className="mt-3 rounded-2xl bg-secondary px-4 py-3 text-center">
+        <div className="mt-3 rounded-[1.5rem] border border-border/45 bg-secondary/60 px-4 py-3 text-center shadow-inset-soft dark:border-white/[0.06]">
           <p className="text-sm font-semibold tracking-tight">
             From {formatPeso(liveTariff.minFare)} ·{" "}
             {formatPeso(liveTariff.ratePerKm)} per extra km
@@ -316,7 +329,7 @@ export default function Home() {
                 return (
                   <li
                     key={place._id}
-                    className="flex items-stretch gap-1 rounded-xl border border-border"
+                    className="flex items-stretch gap-1 rounded-[1.25rem] border border-border/50 bg-card shadow-soft-sm dark:border-white/[0.07]"
                   >
                     <button
                       type="button"
@@ -383,7 +396,7 @@ function Tile({
 }) {
   const body = (
     <>
-      <span className="flex size-11 items-center justify-center rounded-full bg-secondary text-foreground">
+      <span className="flex size-11 items-center justify-center rounded-full border border-border/45 bg-secondary text-foreground shadow-soft-sm dark:border-white/[0.06]">
         <Icon className="size-5" aria-hidden />
       </span>
       <span className="text-center text-[11px] leading-4 tracking-tight">
@@ -397,7 +410,7 @@ function Tile({
       <button
         type="button"
         onClick={onClick}
-        className="flex flex-col items-center gap-2 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="flex flex-col items-center gap-2 rounded-[1.5rem] p-2 transition-all hover:bg-card/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         {body}
       </button>
@@ -406,7 +419,7 @@ function Tile({
   return (
     <Link
       to={to ?? "/"}
-      className="flex flex-col items-center gap-2 rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="flex flex-col items-center gap-2 rounded-[1.5rem] p-2 transition-all hover:bg-card/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
       {body}
     </Link>

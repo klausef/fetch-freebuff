@@ -80,11 +80,11 @@ export function ProfileNavigationRail({
             end={item.end}
             className={({ isActive }) =>
               cn(
-                "flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm font-medium tracking-tight transition-colors",
+                "flex min-h-11 items-center gap-3 rounded-full border border-transparent px-4 text-sm font-medium tracking-tight transition-all duration-200",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 isActive
-                  ? "bg-secondary text-foreground"
-                  : "text-muted-foreground hover:bg-secondary/60 hover:text-foreground",
+                  ? "border-border/55 bg-card text-foreground shadow-soft-sm dark:border-white/[0.07]"
+                  : "text-muted-foreground hover:bg-card/50 hover:text-foreground",
               )
             }
           >

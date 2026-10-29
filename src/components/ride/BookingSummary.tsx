@@ -181,7 +181,7 @@ export function BookingSummary({
         <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
           Booking summary
         </p>
-        <div className="mt-2 space-y-2 rounded-xl border border-border bg-secondary/40 p-3">
+        <div className="mt-2 space-y-2 rounded-2xl border border-border/45 bg-secondary/40 p-3 shadow-inset-soft dark:border-white/[0.06]">
           <div className="flex gap-2.5">
             <span
               className="mt-1.5 size-2 shrink-0 rounded-full bg-primary ring-4 ring-background"

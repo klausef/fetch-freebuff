@@ -10,10 +10,10 @@ export default function NotFound() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4 }}
-      className="safe-bottom flex min-h-dvh flex-col bg-background text-foreground"
+      className="soft-canvas safe-bottom flex min-h-dvh flex-col text-foreground"
     >
       <header className="safe-top mx-auto flex h-16 w-full max-w-6xl items-center px-4 sm:px-6">
-        <Link to="/" className="rounded-md">
+        <Link to="/" className="rounded-full">
           <FetchBrand size="md" />
         </Link>
       </header>
@@ -23,7 +23,7 @@ export default function NotFound() {
           <p className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground">
             Off the route
           </p>
-          <h1 className="mt-4 text-6xl font-semibold tracking-tight text-fetch-red sm:text-7xl">
+          <h1 className="mt-4 text-6xl font-semibold tracking-tight text-primary sm:text-7xl">
             404
           </h1>
           <p className="mt-4 text-base leading-7 text-muted-foreground">
@@ -31,7 +31,7 @@ export default function NotFound() {
             ride, the booking screen is one tap away.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
-            <Button asChild size="lg" className="bg-fetch-red text-white hover:bg-fetch-red-deep">
+            <Button asChild size="lg">
               <Link to="/auth?returnTo=%2Fapp">
                 Book a ride
                 <ArrowRight className="size-4" />

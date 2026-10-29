@@ -52,7 +52,7 @@ export function ServiceAreaSheet({
           {LIVE_CITIES.map((city) => (
             <li
               key={city.name}
-              className="rounded-2xl border border-fetch-red/30 bg-fetch-red/5 p-4"
+              className="rounded-[1.5rem] border border-fetch-red/20 bg-fetch-red/[0.06] p-4 shadow-soft-sm"
             >
               <div className="flex items-start gap-2.5">
                 {/* A tick rather than a dot: this list is a short "yes" and a
@@ -60,7 +60,7 @@ export function ServiceAreaSheet({
                     before a word is read. */}
                 <span
                   aria-hidden
-                  className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-fetch-red text-white"
+                  className="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-soft-sm"
                 >
                   <Check className="size-3" />
                 </span>
@@ -89,7 +89,7 @@ export function ServiceAreaSheet({
             {PLANNED_MUNICIPALITIES.map((town) => (
               <li
                 key={town}
-                className="rounded-full border border-border px-3 py-1.5 text-xs tracking-tight text-muted-foreground"
+                className="rounded-full border border-border/45 bg-card/70 px-3 py-1.5 text-xs tracking-tight text-muted-foreground shadow-inset-soft dark:border-white/[0.07]"
               >
                 {town}
               </li>

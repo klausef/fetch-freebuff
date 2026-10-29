@@ -175,7 +175,7 @@ export function RideRequestModal({
               <Clock className="size-3.5" />
               {formatCountdown(left)} to accept
             </span>
-            <span className="inline-flex items-center gap-1 rounded-full border border-border px-2 py-0.5 text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+            <span className="inline-flex items-center gap-1 rounded-full border border-border/50 bg-card/60 px-2.5 py-0.5 text-[10px] tracking-[0.14em] text-muted-foreground uppercase shadow-soft-sm dark:border-white/[0.07]">
               <Icon className="size-3" />
               {request.rideType}
             </span>
@@ -240,7 +240,7 @@ export function RideRequestModal({
 
         {/* Route preview. */}
         <div className="mt-4 px-4">
-          <div className="overflow-hidden rounded-2xl border border-border">
+          <div className="overflow-hidden rounded-[1.5rem] border border-border/50 shadow-soft-sm dark:border-white/[0.07]">
             <MapView
               center={{ lat: request.pickup.lat, lng: request.pickup.lng }}
               zoom={13}
@@ -375,7 +375,7 @@ export function PassengerAvatar({
 
 function Metric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-border/70 bg-card px-3 py-2">
+    <div className="rounded-[1.25rem] border border-border/50 bg-card/80 px-3 py-2 shadow-soft-sm dark:border-white/[0.07]">
       <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
         {label}
       </p>

@@ -215,7 +215,7 @@ export function FaresTab() {
           ))}
         </div>
 
-        <div className="mt-4 rounded-lg border border-border bg-secondary/40 p-3">
+        <div className="mt-4 rounded-2xl border border-white/50 bg-secondary/40 p-3 shadow-inset-soft dark:border-white/[0.06]">
           <p className="text-[11px] font-medium tracking-tight">
             Worked example · {example.spec.name}
           </p>

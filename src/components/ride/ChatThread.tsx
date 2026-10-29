@@ -89,7 +89,7 @@ export function ChatThread({
     <div className={cn("flex min-h-0 flex-1 flex-col gap-3", className)}>
       <div
         ref={listRef}
-        className="flex min-h-24 flex-1 flex-col gap-2 overflow-y-auto rounded-2xl border border-border bg-secondary/40 p-3"
+        className="flex min-h-24 flex-1 flex-col gap-2 overflow-y-auto rounded-2xl border border-border/45 bg-secondary/40 p-3 shadow-inset-soft dark:border-white/[0.06]"
       >
         {messages.length === 0 ? (
           <p className="m-auto px-2 text-center text-xs leading-5 text-muted-foreground">
@@ -115,7 +115,7 @@ export function ChatThread({
                   "max-w-[85%] rounded-2xl px-3 py-2 text-sm leading-6",
                   message.mine
                     ? "ml-auto rounded-br-md bg-primary text-primary-foreground"
-                    : "mr-auto rounded-bl-md border border-border bg-background",
+                    : "mr-auto rounded-bl-md border border-border/50 bg-card shadow-soft-sm dark:border-white/[0.07]",
                 )}
               >
                 {!message.mine ? (
@@ -128,7 +128,7 @@ export function ChatThread({
                   className={cn(
                     "mt-1 text-[10px]",
                     message.mine
-                      ? "text-right text-white/70"
+                      ? "text-right text-primary-foreground/70"
                       : "text-muted-foreground",
                   )}
                 >
@@ -156,7 +156,7 @@ export function ChatThread({
                 type="button"
                 onClick={() => void post(reply.body)}
                 disabled={sending}
-                className="min-h-9 shrink-0 rounded-full border border-border bg-background px-3 text-xs font-medium tracking-tight text-foreground transition-colors hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                className="min-h-9 shrink-0 rounded-full border border-border/50 bg-card/70 px-3 text-xs font-medium tracking-tight text-foreground shadow-soft-sm transition-colors hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50 dark:border-white/[0.07]"
               >
                 {reply.label}
               </button>

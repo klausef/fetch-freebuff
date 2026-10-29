@@ -256,7 +256,7 @@ function ResultRow({
     <button
       type="button"
       onClick={() => onPick(place)}
-      className="flex w-full items-start gap-2.5 border-b border-border/60 px-3 py-2.5 text-left transition-colors last:border-b-0 hover:bg-secondary"
+      className="flex w-full items-start gap-2.5 border-b border-border/45 px-3 py-2.5 text-left transition-colors last:border-b-0 hover:bg-secondary/60 dark:border-white/[0.06]"
     >
       <Search aria-hidden className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" />
       <span className="min-w-0 flex-1">
@@ -289,7 +289,7 @@ function Results({
 }) {
   if (!open) return null;
   return (
-    <div className="absolute inset-x-0 top-[calc(100%+6px)] z-40 overflow-hidden rounded-lg border border-border bg-popover shadow-lg">
+    <div className="absolute inset-x-0 top-[calc(100%+6px)] z-40 overflow-hidden rounded-[1.5rem] border border-border/50 bg-popover shadow-soft-lg dark:border-white/[0.07]">
       {status === "loading" ? (
         <div className="flex items-center gap-2 px-3 py-3 text-xs text-muted-foreground">
           <Loader2 className="size-3.5 animate-spin" />
@@ -423,7 +423,7 @@ export function PlaceField({
           disabled={disabled || locating}
           title={locationHint}
           aria-label={locationHint}
-          className="flex size-11 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground disabled:opacity-40"
+          className="flex size-11 shrink-0 items-center justify-center rounded-full border border-border/55 bg-card/70 text-muted-foreground shadow-soft-sm transition-all hover:bg-card hover:text-foreground disabled:opacity-40 dark:border-white/[0.07]"
         >
           {locating ? (
             <Loader2 className="size-4 animate-spin" />

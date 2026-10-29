@@ -780,7 +780,7 @@ export default function SetLocation({ step }: { step: LocationStep }) {
         ) : null}
 
         {step === "pickup" && here.needsFallback ? (
-          <div className="mt-3 space-y-3 rounded-xl border border-border bg-card p-3.5">
+          <div className="mt-3 space-y-3 rounded-[1.25rem] border border-white/60 bg-card/85 p-3.5 shadow-soft-sm dark:border-white/[0.07]">
             <div className="flex gap-2.5">
               <AlertCircle aria-hidden className="mt-0.5 size-4 shrink-0 text-muted-foreground" />
               <div className="min-w-0 space-y-1">
@@ -843,7 +843,7 @@ export default function SetLocation({ step }: { step: LocationStep }) {
             holding the map is the newest thing that happened, and a control the
             commuter has to go looking for is a control they will not find. */}
         {heldPin ? (
-          <div className="mt-4 rounded-xl border border-border bg-card p-3.5">
+          <div className="mt-4 rounded-[1.25rem] border border-white/60 bg-card/85 p-3.5 shadow-soft-sm dark:border-white/[0.07]">
             <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
               {t("setLocation", "heldPinTitle")}
             </p>
@@ -921,7 +921,7 @@ export default function SetLocation({ step }: { step: LocationStep }) {
                           place.label,
                         )
                       }
-                      className="inline-flex min-h-9 max-w-full items-center gap-1.5 rounded-full border border-border px-3 text-xs font-medium tracking-tight transition-colors hover:bg-secondary"
+                      className="inline-flex min-h-9 max-w-full items-center gap-1.5 rounded-full border border-white/60 bg-card/70 px-3 text-xs font-medium tracking-tight shadow-soft-sm transition-colors hover:bg-card dark:border-white/[0.07]"
                     >
                       <History aria-hidden className="size-3.5 shrink-0 text-muted-foreground" />
                       <span className="truncate">{shortAddress(place.label)}</span>
@@ -950,7 +950,7 @@ export default function SetLocation({ step }: { step: LocationStep }) {
                           place.address,
                         )
                       }
-                      className="inline-flex min-h-9 max-w-full items-center gap-1.5 rounded-full border border-border px-3 text-xs font-medium tracking-tight transition-colors hover:bg-secondary"
+                      className="inline-flex min-h-9 max-w-full items-center gap-1.5 rounded-full border border-white/60 bg-card/70 px-3 text-xs font-medium tracking-tight shadow-soft-sm transition-colors hover:bg-card dark:border-white/[0.07]"
                     >
                       <History aria-hidden className="size-3.5 shrink-0 text-muted-foreground" />
                       <span className="truncate">{shortAddress(place.address)}</span>
@@ -973,7 +973,7 @@ export default function SetLocation({ step }: { step: LocationStep }) {
                           place.address ?? place.label,
                         )
                       }
-                      className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-border px-3 text-xs font-medium tracking-tight transition-colors hover:bg-secondary"
+                      className="inline-flex min-h-9 items-center gap-1.5 rounded-full border border-white/60 bg-card/70 px-3 text-xs font-medium tracking-tight shadow-soft-sm transition-colors hover:bg-card dark:border-white/[0.07]"
                     >
                       <Bookmark aria-hidden className="size-3.5" />
                       {place.label}
@@ -1009,7 +1009,7 @@ export default function SetLocation({ step }: { step: LocationStep }) {
             able to judge it, so the answer belongs next to the choice rather
             than two screens later. */}
             {tripKm !== null ? (
-              <div className="mt-4 flex items-center justify-between rounded-xl border border-border bg-card px-3.5 py-3">
+              <div className="mt-4 flex items-center justify-between rounded-[1.25rem] border border-white/60 bg-card/85 px-3.5 py-3 shadow-soft-sm dark:border-white/[0.07]">
                 <span className="flex items-center gap-2 text-sm tracking-tight">
                   <MapPin aria-hidden className="size-4 text-fetch-red" />
                   {formatDistance(tripKm)}

@@ -29,10 +29,10 @@ function NavItem({ to, children }: { to: string; children: ReactNode }) {
           // min-h-11 keeps every header link a full-size touch target
           // on a phone, where 24px of padding is a mis-tap waiting to
           // happen.
-          "flex min-h-11 items-center rounded-full px-3 text-sm tracking-tight transition-colors",
+          "flex min-h-11 items-center rounded-full px-4 text-sm font-medium tracking-tight transition-all duration-200",
           isActive
-            ? "bg-primary text-primary-foreground"
-            : "text-muted-foreground hover:text-foreground",
+            ? "bg-primary text-primary-foreground shadow-soft-sm"
+            : "text-muted-foreground hover:bg-foreground/[0.05] hover:text-foreground",
         )
       }
     >
@@ -70,12 +70,16 @@ export function AppShell({
   const t = useT();
 
   return (
-    <div className="flex min-h-dvh flex-col bg-background text-foreground">
-      <header className="safe-top sticky top-0 z-30 border-b border-border/70 bg-background/85 backdrop-blur">
+    <div className="soft-canvas flex min-h-dvh flex-col text-foreground">
+      <header className="safe-top sticky top-0 z-30 border-b border-border/45 bg-background/75 shadow-[0_10px_30px_-26px_rgb(86_62_45/0.45)] backdrop-blur-xl dark:border-white/[0.06] dark:shadow-none">
         <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:gap-4 sm:px-6">
           <div className="flex items-center gap-4 sm:gap-5">
-            <NavLink to="/" className="rounded-md" aria-label={t("nav", "home")}>
-              <FetchBrand size="md" />
+            <NavLink
+              to="/"
+              className="rounded-full border border-border/50 bg-card/85 p-1 pr-3 shadow-soft-sm backdrop-blur-md transition-all hover:-translate-y-px hover:bg-card hover:shadow-soft dark:border-white/10 dark:bg-card/55"
+              aria-label={t("nav", "home")}
+            >
+              <FetchBrand size="sm" />
             </NavLink>
             <nav className="hidden items-center gap-1 sm:flex">
               {isAdmin ? (
@@ -90,12 +94,15 @@ export function AppShell({
             </nav>
           </div>
           <div className="flex items-center gap-2 sm:gap-3">
-            <Popover open={notificationsOpen} onOpenChange={setNotificationsOpen}>
+            <Popover
+              open={notificationsOpen}
+              onOpenChange={setNotificationsOpen}
+            >
               <PopoverTrigger asChild>
                 <button
                   type="button"
                   aria-label="Notifications"
-                  className="relative flex size-11 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground"
+                  className="relative flex size-11 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-all hover:bg-foreground/[0.05] hover:text-foreground"
                 >
                   <Bell className="size-5" />
                   {(unread ?? 0) > 0 && (
@@ -142,9 +149,12 @@ export function AppShell({
                           {notification.body}
                         </p>
                         <p className="mt-1 text-[11px] text-muted-foreground/80">
-                          {formatDistanceToNow(new Date(notification.createdAt), {
-                            addSuffix: true,
-                          })}
+                          {formatDistanceToNow(
+                            new Date(notification.createdAt),
+                            {
+                              addSuffix: true,
+                            },
+                          )}
                         </p>
                       </div>
                     ))

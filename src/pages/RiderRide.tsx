@@ -355,7 +355,7 @@ export default function RiderRide() {
 
         <div className="mt-4 space-y-4">
           {!hasRide && !showReceipt ? (
-            <section className="rounded-3xl border border-border/70 bg-card p-6 text-center">
+            <section className="rounded-[1.75rem] border border-white/60 bg-card/90 p-6 text-center shadow-soft-lg backdrop-blur-sm dark:border-white/[0.07]">
               <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-muted">
                 <MapPin className="size-5 text-muted-foreground" />
               </div>
@@ -420,7 +420,7 @@ export default function RiderRide() {
             return (
               <section
                 key={rideId}
-                className="overflow-hidden rounded-3xl border border-border/70 bg-card"
+                className="overflow-hidden rounded-[1.75rem] border border-white/60 bg-card/90 shadow-soft-lg backdrop-blur-sm dark:border-white/[0.07]"
               >
                 {/* Stage banner. */}
                 <div
@@ -463,7 +463,7 @@ export default function RiderRide() {
                     <div className="flex items-start gap-3">
                       <span
                         aria-hidden
-                        className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-border text-[10px] font-semibold"
+                        className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-white/60 bg-card/70 text-[10px] font-semibold shadow-soft-sm dark:border-white/[0.07]"
                       >
                         A
                       </span>
@@ -605,7 +605,7 @@ export default function RiderRide() {
                       }
                       aria-disabled={!(passenger?.phone ?? counterparty?.phone)}
                       className={cn(
-                        "flex h-11 items-center justify-center gap-1.5 rounded-xl border border-border text-xs font-medium tracking-tight transition active:bg-secondary",
+                        "flex h-11 items-center justify-center gap-1.5 rounded-2xl border border-white/60 bg-card/70 text-xs font-medium tracking-tight shadow-soft-sm transition hover:bg-card active:shadow-inset-soft dark:border-white/[0.07]",
                         !(passenger?.phone ?? counterparty?.phone) &&
                           "pointer-events-none opacity-50",
                       )}
@@ -615,7 +615,7 @@ export default function RiderRide() {
                     </a>
                     <Link
                       to={`/chats?ride=${rideId}`}
-                      className="flex h-11 items-center justify-center gap-1.5 rounded-xl border border-border text-xs font-medium tracking-tight transition active:bg-secondary"
+                      className="flex h-11 items-center justify-center gap-1.5 rounded-2xl border border-white/60 bg-card/70 text-xs font-medium tracking-tight shadow-soft-sm transition hover:bg-card active:shadow-inset-soft dark:border-white/[0.07]"
                     >
                       <MessageCircle className="size-4" />
                       Message
@@ -630,7 +630,7 @@ export default function RiderRide() {
                       )}`}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex h-11 items-center justify-center gap-1.5 rounded-xl border border-border text-xs font-medium tracking-tight transition active:bg-secondary"
+                      className="flex h-11 items-center justify-center gap-1.5 rounded-2xl border border-white/60 bg-card/70 text-xs font-medium tracking-tight shadow-soft-sm transition hover:bg-card active:shadow-inset-soft dark:border-white/[0.07]"
                     >
                       <Navigation className="size-4" />
                       Navigate
@@ -639,7 +639,7 @@ export default function RiderRide() {
 
                   {/* Pasugo. */}
                   {errand ? (
-                    <div className="mt-4 rounded-2xl border border-border bg-muted/40 p-3.5">
+                    <div className="mt-4 rounded-2xl bg-muted/40 p-3.5 shadow-inset-soft">
                       <p className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
                         <ShoppingBasket className="size-3.5" />
                         {errandKind === "pabili" ? "Pabili" : "Padala"}
@@ -890,7 +890,7 @@ function CompletedPanel({
   const collectAmount = settlement.net;
 
   return (
-    <section className="overflow-hidden rounded-3xl border border-border/70 bg-card">
+    <section className="overflow-hidden rounded-[1.75rem] border border-white/60 bg-card/90 shadow-soft-lg backdrop-blur-sm dark:border-white/[0.07]">
       <div className="flex items-center gap-3 bg-emerald-600 px-4 py-4 text-white sm:px-5">
         <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-white/20">
           <Check className="size-5" />
@@ -1064,7 +1064,7 @@ function CompletedPanel({
 
 function Metric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-border/70 bg-card px-3 py-2">
+    <div className="rounded-[1.25rem] border border-white/60 bg-card/80 px-3 py-2 shadow-soft-sm dark:border-white/[0.07]">
       <p className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
         {label}
       </p>

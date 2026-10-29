@@ -139,7 +139,7 @@ export default function RiderOverview() {
 
         {/* Earnings. Dark, and first: this is the number the rider opened the
             tab for. */}
-        <section className="mt-4 rounded-2xl border border-border/70 bg-fetch-ink p-4 text-white sm:p-5">
+        <section className="mt-4 rounded-[1.75rem] border border-white/10 bg-fetch-ink p-4 text-white shadow-soft-lg dark:bg-[#221e1a] sm:p-5">
           <div className="flex items-baseline justify-between gap-3">
             <p className="text-[10px] uppercase tracking-[0.2em] text-white/60">
               Earnings today
@@ -169,7 +169,7 @@ export default function RiderOverview() {
             they do not move within a day, and a rider comparing themselves
             across trips reads them, not today's pesos. */}
         <section className="mt-4 grid grid-cols-2 gap-3">
-          <div className="rounded-2xl border border-border/70 bg-card p-4">
+          <div className="rounded-[1.5rem] border border-white/60 bg-card/85 p-4 shadow-soft-sm backdrop-blur-sm dark:border-white/[0.07]">
             <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
               <Star className="size-3 fill-fetch-gold text-fetch-gold" />
               Rating
@@ -185,7 +185,7 @@ export default function RiderOverview() {
                 : "No ratings yet"}
             </p>
           </div>
-          <div className="rounded-2xl border border-border/70 bg-card p-4">
+          <div className="rounded-[1.5rem] border border-white/60 bg-card/85 p-4 shadow-soft-sm backdrop-blur-sm dark:border-white/[0.07]">
             <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
               <TrendingUp className="size-3 text-muted-foreground" />
               Trips done
@@ -202,7 +202,7 @@ export default function RiderOverview() {
         {/* The vehicle. Editing lives here rather than on the booking screen,
             but the booking screen links to it, because going online is disabled
             without a vehicle and that screen is where somebody discovers it. */}
-        <section className="mt-4 rounded-2xl border border-border/70 bg-card p-4 sm:p-5">
+        <section className="mt-4 rounded-[1.75rem] border border-white/60 bg-card/90 p-4 shadow-soft backdrop-blur-sm dark:border-white/[0.07] dark:bg-card/75 sm:p-5">
           <div className="flex items-center justify-between gap-3">
             <div className="min-w-0">
               <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
@@ -215,7 +215,7 @@ export default function RiderOverview() {
               </p>
             </div>
             {hasVehicle ? (
-              <span className="shrink-0 rounded-lg border border-border bg-background px-2.5 py-1 text-sm font-semibold tracking-wide">
+              <span className="shrink-0 rounded-full border border-white/60 bg-background/80 px-3 py-1 text-sm font-semibold tracking-wide shadow-soft-sm dark:border-white/10">
                 {rider.vehicle.plate}
               </span>
             ) : null}
@@ -256,7 +256,7 @@ export default function RiderOverview() {
 
         {/* Recent trips. A short list, not the full history: the Trips tab is
             one tap away and is where somebody goes looking for a receipt. */}
-        <section className="mt-4 rounded-2xl border border-border/70 bg-card p-4 sm:p-5">
+        <section className="mt-4 rounded-[1.75rem] border border-white/60 bg-card/90 p-4 shadow-soft backdrop-blur-sm dark:border-white/[0.07] dark:bg-card/75 sm:p-5">
           <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
             Recent trips
           </p>            {(recent ?? []).length === 0 ? (

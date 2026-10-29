@@ -36,7 +36,7 @@ export function Panel({
   return (
     <section
       className={cn(
-        "rounded-2xl border border-border/70 bg-card p-4 sm:p-5",
+        "rounded-[1.75rem] border border-white/60 bg-card/90 p-4 shadow-soft backdrop-blur-sm dark:border-white/[0.07] dark:bg-card/75 sm:p-5",
         className,
       )}
     >
@@ -70,7 +70,7 @@ export function StatCard({
   icon?: LucideIcon;
 }) {
   return (
-    <div className="rounded-2xl border border-border/70 bg-card p-4">
+    <div className="rounded-[1.5rem] border border-white/60 bg-card/80 p-4 shadow-soft-sm dark:border-white/[0.07]">
       <div className="flex items-start justify-between gap-2">
         <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
           {label}

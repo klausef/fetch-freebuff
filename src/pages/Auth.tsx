@@ -57,6 +57,9 @@ export function Auth({ redirectAfterAuth = "/app" }: AuthProps = {}) {
   const [error, setError] = useState<string | null>(null);
   const [mode, setMode] = useState<"otp" | "password">("otp");
   const [pwFlow, setPwFlow] = useState<"signIn" | "signUp">("signIn");
+  // A create form must not offer to autofill an existing password.
+  const passwordAutoComplete =
+    pwFlow === "signUp" ? "new-password" : "current-password";
 
   const { isOwner, resolved } = useOwnerAdmin();
   const needsOwnerPassword = useQuery(api.profiles.ownerNeedsPassword);
@@ -160,14 +163,14 @@ export function Auth({ redirectAfterAuth = "/app" }: AuthProps = {}) {
   };
 
   return (
-    <div className="flex min-h-dvh flex-col bg-background text-foreground">
-      <header className="safe-top flex items-center justify-between gap-3 border-b border-border/70 px-4 py-3 sm:px-6">
+    <div className="soft-canvas flex min-h-dvh flex-col text-foreground">
+      <header className="safe-top flex items-center justify-between gap-3 border-b border-border/45 bg-background/65 px-4 py-3 backdrop-blur-xl sm:px-6 dark:border-white/[0.06]">
         <Link
           to="/"
-          className="rounded-md"
+          className="rounded-full border border-border/50 bg-card/85 p-1 pr-3 shadow-soft-sm backdrop-blur-md transition-all hover:-translate-y-px hover:bg-card hover:shadow-soft dark:border-white/10 dark:bg-card/55"
           aria-label="Back to the home page"
         >
-          <FetchBrand size="md" />
+          <FetchBrand size="sm" />
         </Link>
         <div className="flex items-center gap-2">
           <LocaleSwitcher />
@@ -187,7 +190,7 @@ export function Auth({ redirectAfterAuth = "/app" }: AuthProps = {}) {
       <main className="flex flex-1 items-center justify-center px-4 py-10">
         <div className="w-full max-w-sm">
           {needsOwnerPassword ? (
-            <section className="mb-6 rounded-xl border border-primary/30 bg-primary/5 p-5">
+            <section className="mb-6 rounded-[1.75rem] border border-primary/20 bg-primary/[0.06] p-5 shadow-soft-sm backdrop-blur-sm">
               <div className="mb-3 flex items-center gap-2 text-primary">
                 <ShieldCheck className="size-4" />
                 <span className="text-xs font-semibold tracking-wide uppercase">
@@ -237,12 +240,14 @@ export function Auth({ redirectAfterAuth = "/app" }: AuthProps = {}) {
           ) : null}
 
           {step === "signIn" ? (
-            <section className="rounded-xl border border-border/70 bg-card p-5 sm:p-6">
+            <section className="soft-sheen rounded-[1.75rem] border border-border/55 bg-card/95 p-5 shadow-soft-lg sm:p-6 dark:border-white/[0.07] dark:bg-card/90">
               <h1 className="text-2xl font-bold tracking-tight">
                 {t("auth", "title")}
               </h1>
               <p className="mt-1 text-sm leading-6 text-muted-foreground">
-                {mode === "otp" ? t("auth", "otpHint") : t("auth", "passwordHint")}
+                {mode === "otp"
+                  ? t("auth", "otpHint")
+                  : t("auth", "passwordHint")}
               </p>
 
               {mode === "otp" ? (
@@ -298,9 +303,7 @@ export function Auth({ redirectAfterAuth = "/app" }: AuthProps = {}) {
                       type="password"
                       required
                       minLength={pwFlow === "signUp" ? 10 : undefined}
-                      autoComplete={
-                        pwFlow === "signUp" ? "new-password" : "current-password"
-                      }
+                      autoComplete={passwordAutoComplete}
                       placeholder="••••••••••"
                     />
                     <p className="text-xs leading-5 text-muted-foreground">
@@ -380,7 +383,7 @@ export function Auth({ redirectAfterAuth = "/app" }: AuthProps = {}) {
               </p>
             </section>
           ) : (
-            <section className="rounded-xl border border-border/70 bg-card p-5 sm:p-6">
+            <section className="soft-sheen rounded-[1.75rem] border border-border/55 bg-card/95 p-5 shadow-soft-lg sm:p-6 dark:border-white/[0.07] dark:bg-card/90">
               <h1 className="text-xl font-bold tracking-tight">
                 {t("auth", "checkEmail")}
               </h1>

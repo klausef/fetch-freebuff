@@ -31,7 +31,7 @@ export function StatusChip({ status }: { status: string }) {
   return (
     <span
       className={cn(
-        "rounded-full border border-border px-2 py-0.5 text-[10px] uppercase tracking-[0.14em]",
+        "rounded-full border border-border/50 bg-card/60 px-2.5 py-0.5 text-[10px] tracking-[0.14em] uppercase shadow-soft-sm dark:border-white/[0.07]",
         status === "COMPLETED" ? "text-foreground" : "text-muted-foreground",
       )}
     >
@@ -43,7 +43,7 @@ export function StatusChip({ status }: { status: string }) {
 export function RideTimeline({ status }: { status: string }) {
   if (status === "CANCELLED") {
     return (
-      <div className="rounded-lg border border-border bg-secondary/40 px-3.5 py-2.5 text-sm text-muted-foreground">
+      <div className="rounded-2xl border border-border/45 bg-secondary/40 px-3.5 py-2.5 text-sm text-muted-foreground shadow-inset-soft dark:border-white/[0.06]">
         This ride was cancelled.
       </div>
     );

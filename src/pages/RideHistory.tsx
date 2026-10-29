@@ -124,7 +124,7 @@ export default function RideHistory() {
                   <h2 className="text-sm font-semibold tracking-tight">
                     Ongoing
                   </h2>
-                  <div className="mt-3 overflow-hidden rounded-2xl border border-border">
+                  <div className="mt-3 overflow-hidden rounded-[1.5rem] border border-white/60 bg-card/80 shadow-soft-sm dark:border-white/[0.07]">
                     <RideHistoryList only="ongoing" onSelect={setSelected} />
                   </div>
                 </section>
@@ -133,7 +133,7 @@ export default function RideHistory() {
               {pastCount > 0 ? (
                 <section className={ongoingCount > 0 ? "mt-6" : undefined}>
                   <h2 className="text-sm font-semibold tracking-tight">Past</h2>
-                  <div className="mt-3 overflow-hidden rounded-2xl border border-border">
+                  <div className="mt-3 overflow-hidden rounded-[1.5rem] border border-white/60 bg-card/80 shadow-soft-sm dark:border-white/[0.07]">
                     <RideHistoryList only="past" onSelect={setSelected} />
                   </div>
                 </section>
