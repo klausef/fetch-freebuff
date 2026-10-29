@@ -1,4 +1,3 @@
-import "@vly-ai/integrations";
 import { ConvexAuthProvider } from "@convex-dev/auth/react";
 import { Loader2 } from "lucide-react";
 import { ThemeProvider } from "next-themes";
