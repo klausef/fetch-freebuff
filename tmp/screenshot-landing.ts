@@ -1,3 +1,6 @@
+// This file is a standalone runner and is not compiled by the app's tsc build.
+// It is kept out of src/ so the app's tsconfig does not try to type-check it.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { chromium } from "playwright";
 import * as fs from "node:fs";
 import * as path from "node:path";

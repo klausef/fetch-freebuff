@@ -1,4 +1,7 @@
-import { vlyPlugin } from "@vly-ai/integrations";
+// Vly integrations are wired through the project's dev server, so the app
+// no longer imports that package directly. If you add it back, restore the
+// import and the plugin below.
+// import { vlyPlugin } from "@vly-ai/integrations";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
@@ -6,7 +9,7 @@ import { defineConfig } from "vite";
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), vlyPlugin(), tailwindcss()],
+  plugins: [react(), /* vlyPlugin(), */ tailwindcss()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
