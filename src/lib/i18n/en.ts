@@ -64,6 +64,9 @@ export const en = {
       "By continuing, I consent to my personal data processing according to Fetch's",
     termOfService: "Term of Service",
     privacyNotice: "Privacy Notice",
+    serviceRide: "Ride",
+    servicePabili: "Pabili",
+    servicePadala: "Padala",
     slide1Title: "Welcome to Fetch!",
     slide1Body:
       "Your go-to app for a hassle-free life, we're here to help with all your needs!",

@@ -243,7 +243,7 @@ export function UsersTab() {
               </dl>
 
               {open.suspendedAt != null ? (
-                <div className="rounded-lg border border-primary/40 bg-primary/5 p-3">
+                <div className="rounded-2xl border border-primary/35 bg-primary/[0.06] p-3 shadow-soft-xs">
                   <p className="text-sm font-medium">Suspended</p>
                   <p className="mt-1 text-[11px] text-muted-foreground">
                     {open.suspendedReason}

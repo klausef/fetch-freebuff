@@ -161,7 +161,7 @@ export default function Onboarding() {
             would otherwise have no route to `/rider/register`. */}
         <Link
           to="/rider/register"
-          className="soft-sheen mt-6 block rounded-[1.5rem] border border-border/50 bg-card p-4 shadow-soft-sm transition-all hover:-translate-y-px hover:shadow-soft dark:border-white/[0.07] dark:bg-card/85"
+          className="soft-panel mt-6 block rounded-[1.5rem] p-4 shadow-soft-sm transition-all hover:-translate-y-px hover:shadow-soft"
         >
           <p className="text-sm font-medium tracking-tight">
             {t("onboarding", "driveWithUs")}

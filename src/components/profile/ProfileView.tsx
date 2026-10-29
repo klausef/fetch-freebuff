@@ -234,7 +234,7 @@ export function ProfileView({
     <div className="space-y-6">
       {/* Who you are. The photo is the one thing here you change without a
           dialog, because it is a single tap and a camera roll. */}
-      <section className="soft-sheen rounded-[1.75rem] border border-border/55 bg-card p-4 shadow-soft dark:border-white/[0.07] dark:bg-card/85 sm:p-5">
+      <section className="soft-panel rounded-[1.75rem] p-4 sm:p-5">
         <div className="flex items-center gap-4">
           <PhotoPicker name={displayName} className="shrink-0" />
           <div className="min-w-0 flex-1">

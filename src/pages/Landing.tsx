@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { en } from "@/lib/i18n";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { useT } from "@/lib/i18n/LocaleProvider";
+import { Car, PackageCheck, ShoppingBasket, type LucideIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
@@ -55,6 +56,20 @@ const SLIDES: {
     bodyKey: "slide4Body",
     image: "/illustrations/slide-4.svg",
   },
+];
+
+/**
+ * What Fetch does, in three words.
+ *
+ * A fixed strip under the carousel rather than a fourth slide: the slides sell
+ * the product one idea at a time, while this is the index someone scans before
+ * they commit to signing up. The labels are keys, not words, so the strip
+ * translates with the rest of the page.
+ */
+const SERVICES: { labelKey: LandingKey; icon: LucideIcon }[] = [
+  { labelKey: "serviceRide", icon: Car },
+  { labelKey: "servicePabili", icon: ShoppingBasket },
+  { labelKey: "servicePadala", icon: PackageCheck },
 ];
 
 /**
@@ -169,9 +184,9 @@ export default function Landing() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
       >
-        <div className="absolute -top-40 -left-32 size-[30rem] rounded-full bg-[radial-gradient(circle_at_center,rgb(232_182_76/0.3),transparent_65%)] blur-3xl" />
-        <div className="absolute -top-24 -right-32 size-[28rem] rounded-full bg-[radial-gradient(circle_at_center,rgb(168_67_47/0.22),transparent_65%)] blur-3xl" />
-        <div className="absolute -bottom-48 left-1/4 size-[34rem] rounded-full bg-[radial-gradient(circle_at_center,rgb(46_58_140/0.15),transparent_65%)] blur-3xl" />
+        <div className="soft-float absolute -top-40 -left-32 size-[30rem] rounded-full bg-[radial-gradient(circle_at_center,rgb(232_182_76/0.3),transparent_65%)] blur-3xl [animation-delay:-3s]" />
+        <div className="soft-float absolute -top-24 -right-32 size-[28rem] rounded-full bg-[radial-gradient(circle_at_center,rgb(168_67_47/0.22),transparent_65%)] blur-3xl [animation-delay:-7s]" />
+        <div className="soft-float absolute -bottom-48 left-1/4 size-[34rem] rounded-full bg-[radial-gradient(circle_at_center,rgb(46_58_140/0.15),transparent_65%)] blur-3xl [animation-delay:-11s]" />
       </div>
 
       {/* Brand + language */}
@@ -219,8 +234,15 @@ export default function Landing() {
                       aria-hidden="true"
                       className="absolute -inset-5 -z-10 rounded-[3rem] bg-fetch-royal/10 blur-2xl"
                     />
-                    <div className="soft-sheen rounded-[2.4rem] border border-border/55 bg-card p-2 shadow-soft-lg dark:border-white/[0.08] dark:bg-card/85">
-                      <div className="relative aspect-[5/3] w-full overflow-hidden rounded-[1.7rem] bg-fetch-royal">
+                    {/* A second, slightly tilted plate under the frame. It is
+                        what turns a picture in a box into a stack of paper on
+                        a desk — the depth is the design, not a border. */}
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-x-3 top-4 bottom-2 rotate-[-2deg] rounded-[2.5rem] bg-secondary/70 shadow-soft-sm"
+                    />
+                    <div className="soft-panel relative rounded-[2.4rem] p-2 shadow-soft-lg">
+                      <div className="relative aspect-[5/3] w-full overflow-hidden rounded-[1.7rem] bg-fetch-royal shadow-[inset_0_1px_0_rgb(255_255_255/0.3),inset_0_-28px_48px_-24px_rgb(0_0_0/0.45)]">
                         {slide.image ? (
                           <img
                             src={slide.image}
@@ -243,6 +265,13 @@ export default function Landing() {
                             className="size-1.5 rounded-full bg-fetch-gold"
                           />
                           Bukidnon
+                        </span>
+                        {/* An editorial page number, so the carousel reads as
+                            four panels rather than one panel that happens to
+                            change. The total comes from the slide list. */}
+                        <span className="absolute right-3 bottom-3 rounded-full border border-white/20 bg-black/25 px-2.5 py-1 text-[10px] font-semibold tracking-[0.16em] text-white/90 tabular-nums backdrop-blur-md">
+                          {String(index + 1).padStart(2, "0")} /{" "}
+                          {String(SLIDES.length).padStart(2, "0")}
                         </span>
                       </div>
                     </div>
@@ -269,7 +298,7 @@ export default function Landing() {
           </CarouselContent>
         </Carousel>
 
-        <div className="mx-auto mt-8 flex w-fit items-center gap-1.5 rounded-full border border-border/45 bg-card/70 p-1.5 shadow-inset-soft dark:border-white/[0.07] dark:bg-card/50">
+        <div className="mx-auto mt-7 flex w-fit items-center gap-1.5 rounded-full border border-border/45 bg-card/70 p-1.5 shadow-inset-soft dark:border-white/[0.07] dark:bg-card/50">
           {SLIDES.map((slide, index) => (
             <button
               key={slide.titleKey}
@@ -278,7 +307,7 @@ export default function Landing() {
               aria-current={current === index}
               onClick={() => api?.scrollTo(index)}
               className={cn(
-                "h-2.5 rounded-full transition-all duration-300 ease-soft",
+                "h-2.5 rounded-full transition-all duration-300 ease-soft focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none",
                 current === index
                   ? "w-8 bg-primary shadow-soft-sm"
                   : "w-2.5 bg-muted-foreground/25 hover:bg-muted-foreground/40",
@@ -286,11 +315,29 @@ export default function Landing() {
             />
           ))}
         </div>
+
+        {/* The three doors, as one sunken dock. Same visual grammar as the
+            tab bar inside the app: raised chips in a pressed well. */}
+        <div className="soft-well mt-5 grid grid-cols-3 gap-1 rounded-[1.6rem] p-1.5">
+          {SERVICES.map(({ labelKey, icon: Icon }) => (
+            <div
+              key={labelKey}
+              className="flex flex-col items-center gap-1.5 rounded-[1.2rem] px-1 py-2.5"
+            >
+              <span className="flex size-8 items-center justify-center rounded-full bg-card text-primary shadow-soft-xs">
+                <Icon className="size-4" aria-hidden="true" />
+              </span>
+              <span className="text-[11px] font-semibold tracking-tight text-foreground/80">
+                {t("landing", labelKey)}
+              </span>
+            </div>
+          ))}
+        </div>
       </main>
 
       {/* Consent + entry, in a soft action dock */}
       <footer className="mx-auto w-full max-w-md px-5 pb-6 sm:max-w-xl sm:px-8 lg:max-w-2xl">
-        <div className="soft-sheen rounded-[1.75rem] border border-border/55 bg-card/95 p-4 shadow-soft dark:border-white/[0.07] dark:bg-card/85 sm:p-5">
+        <div className="soft-panel rounded-[1.75rem] p-4 sm:p-5">
           <div className="space-y-2.5 sm:grid sm:grid-cols-2 sm:gap-2.5 sm:space-y-0">
             {/* Both doors lead into /auth: the email-code flow signs existing
                 users in and creates new accounts from the same form. */}

@@ -280,7 +280,7 @@ export default function RiderRegister() {
       </p>
 
       {error ? (
-        <p className="mt-4 rounded-lg border border-primary/40 bg-primary/5 px-3 py-2 text-xs text-foreground">
+        <p className="mt-4 rounded-2xl border border-primary/35 bg-primary/[0.06] px-3.5 py-2.5 text-xs leading-5 text-foreground shadow-soft-xs">
           {error}
         </p>
       ) : null}

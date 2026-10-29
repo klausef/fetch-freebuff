@@ -168,10 +168,10 @@ export function TicketsTab() {
             {open.messages.map((message) => (
               <li
                 key={message._id}
-                className={`rounded-lg border p-3 ${
+                className={`rounded-2xl border p-3 ${
                   message.fromAdmin
-                    ? "border-border bg-secondary/40"
-                    : "border-border bg-card"
+                    ? "border-border/40 bg-secondary/45 shadow-inset-soft"
+                    : "border-border/50 bg-card shadow-soft-xs"
                 }`}
               >
                 <p className="text-[11px] text-muted-foreground">

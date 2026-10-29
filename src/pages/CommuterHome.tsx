@@ -1364,7 +1364,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                       wants, and it counts down rather than sitting at the value
                       it had when the ride was booked. */}
                   {riderApproachingMinutes > 0 ? (
-                    <div className="mt-3 flex items-center gap-2 rounded-lg bg-background/70 px-3 py-2">
+                    <div className="mt-3 flex items-center gap-2 rounded-2xl bg-background/70 px-3 py-2 shadow-inset-soft">
                       <Navigation className="size-3.5 shrink-0 text-primary" />
                       <p className="text-xs tracking-tight">
                         Driver is{" "}
@@ -2261,7 +2261,7 @@ const BOOKING_RIDE_TYPE: RideType = "motorcycle";
                   ) : null}
 
                   {storePinLooksNear ? (
-                    <div className="mt-4 rounded-lg border border-foreground/20 bg-secondary/60 p-3">
+                    <div className="mt-4 rounded-2xl border border-foreground/15 bg-secondary/55 p-3 shadow-soft-xs">
                       <div className="flex items-start gap-2">
                         <AlertCircle className="mt-0.5 size-4 shrink-0" />
                         <div className="min-w-0">

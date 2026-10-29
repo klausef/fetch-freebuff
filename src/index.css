@@ -12,6 +12,7 @@
   /* Soft UI evolution: depth is carried by a pair of shadows — a warm ambient
      cast below and a paper highlight on the top edge — rather than by a hard
      border. The values live outside @theme so .dark can swap them at runtime. */
+  --shadow-soft-xs: var(--soft-shadow-xs);
   --shadow-soft-sm: var(--soft-shadow-sm);
   --shadow-soft: var(--soft-shadow);
   --shadow-soft-lg: var(--soft-shadow-lg);
@@ -84,11 +85,11 @@
 /* CHANGE VALUES FOR THEME */
 :root {
   --radius: 1.125rem;
-  --background: #f1ede6;
+  --background: #efeae2;
   --foreground: #2b2724;
-  --card: #fbf8f2;
+  --card: #fdfaf5;
   --card-foreground: #2b2724;
-  --popover: #fcfaf6;
+  --popover: #fdfaf5;
   --popover-foreground: #2b2724;
   --primary: #a8432f;
   --primary-foreground: #fff8f2;
@@ -123,7 +124,13 @@
   /* Soft UI depth tokens. Depth is a stack, not one blur: a tight contact
      shadow anchors the surface, a mid shadow describes its lift, and a wide
      ambient pass lets it sit in the room. The top rim is warm white, so a
-     raised sheet reads as paper rather than plastic. */
+     raised sheet reads as paper rather than plastic.
+
+     `--soft-shadow-xs` is the chip weight: it has to read as raised on a
+     card without adding a second competing edge. */
+  --soft-shadow-xs:
+    0 1px 1px rgb(86 62 45 / 0.04), 0 3px 8px -4px rgb(86 62 45 / 0.1),
+    inset 0 1px 0 rgb(255 255 255 / 0.75);
   --soft-shadow-sm:
     0 1px 1px rgb(86 62 45 / 0.05), 0 2px 4px -2px rgb(86 62 45 / 0.06),
     0 10px 22px -16px rgb(86 62 45 / 0.24),
@@ -145,6 +152,9 @@
   --soft-shadow-glow:
     0 0 0 1px rgb(168 67 47 / 0.1), 0 22px 45px -18px rgb(168 67 47 / 0.42);
   --soft-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* The light a matte sheet catches on its top-left edge. Kept as a token so
+     the sheen, the rim and the field highlight cannot drift apart. */
+  --soft-highlight: rgb(255 255 255 / 0.6);
 
   /* Ambient colour for the page canvas. Kept very low-contrast: the glow is
      atmosphere, not decoration. `--soft-wash` is the daylight falling from
@@ -189,6 +199,9 @@
   --sidebar-border: #322c26;
   --sidebar-ring: #e07058;
 
+  --soft-shadow-xs:
+    0 1px 1px rgb(0 0 0 / 0.28), 0 3px 8px -4px rgb(0 0 0 / 0.42),
+    inset 0 1px 0 rgb(255 255 255 / 0.04);
   --soft-shadow-sm:
     0 1px 1px rgb(0 0 0 / 0.3), 0 3px 6px -3px rgb(0 0 0 / 0.4),
     0 12px 26px -18px rgb(0 0 0 / 0.6),
@@ -210,6 +223,7 @@
   --soft-shadow-glow:
     0 0 0 1px rgb(224 112 88 / 0.16), 0 24px 48px -18px rgb(224 112 88 / 0.38);
 
+  --soft-highlight: rgb(255 255 255 / 0.06);
   --soft-wash: rgb(255 255 255 / 0.035);
   --soft-glow-gold: rgb(232 182 76 / 0.1);
   --soft-glow-rose: rgb(224 112 88 / 0.12);
@@ -289,16 +303,32 @@
   .soft-sheen {
     background-image: linear-gradient(
       155deg,
-      rgb(255 255 255 / 0.5) 0%,
-      rgb(255 255 255 / 0) 44%
+      var(--soft-highlight) 0%,
+      rgb(255 255 255 / 0) 46%
     );
   }
-  .dark .soft-sheen {
+
+  /*
+    The default raised surface: a sheet of paper lit from the top-left.
+
+    Composes the three things every raised panel in the app shares — the card
+    fill, the top-left sheen, and the stacked shadow — so a new card cannot
+    land with a hard edge simply because one utility was left off. Individual
+    screens still choose their own radius and spacing, and can override the
+    shadow with `shadow-soft-lg` when the panel floats (a sheet, a dialog).
+  */
+  .soft-panel {
+    background-color: var(--card);
     background-image: linear-gradient(
       155deg,
-      rgb(255 255 255 / 0.045) 0%,
-      rgb(255 255 255 / 0) 48%
+      var(--soft-highlight) 0%,
+      rgb(255 255 255 / 0) 46%
     );
+    border: 1px solid color-mix(in oklab, var(--border) 82%, transparent);
+    box-shadow: var(--soft-shadow);
+  }
+  .dark .soft-panel {
+    border-color: rgb(255 255 255 / 0.07);
   }
 
   /*
@@ -309,6 +339,58 @@
   .soft-well {
     background-color: color-mix(in oklab, var(--muted) 72%, transparent);
     box-shadow: var(--soft-inset-soft);
+  }
+
+  /*
+    A hairline that fades at both ends.
+
+    A full-bleed 1px rule reads as a divider between two documents. Soft UI
+    draws it the way a printer would: heaviest in the middle, dissolving before
+    it reaches the margin, so a list never looks boxed in. Horizontal by
+    default; the vertical variant is for split panes.
+  */
+  .soft-rule {
+    background-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--border) 12%,
+      var(--border) 88%,
+      transparent 100%
+    );
+  }
+  .soft-rule-y {
+    background-image: linear-gradient(
+      180deg,
+      transparent 0%,
+      var(--border) 12%,
+      var(--border) 88%,
+      transparent 100%
+    );
+  }
+
+  /*
+    A slow drift for the ambient colour behind the welcome artwork.
+
+    Purely decorative: it moves at a pace you notice only if you stop looking
+    at the copy, and it is switched off entirely when the system asks for less
+    motion. The negative delays used at the call site keep the three orbs from
+    breathing in unison.
+  */
+  .soft-float {
+    animation: soft-drift 16s var(--soft-ease) infinite alternate;
+  }
+  @keyframes soft-drift {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(0, -1.5rem, 0) scale(1.05);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .soft-float {
+      animation: none;
+    }
   }
 
   /*

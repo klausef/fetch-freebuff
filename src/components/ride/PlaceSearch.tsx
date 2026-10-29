@@ -383,8 +383,10 @@ export function PlaceField({
       ref={containerRef}
       className={cn(
         // py-3 rather than py-2.5: the field is a touch target, not a text row.
-        "relative flex items-center gap-3 rounded-lg border px-3 py-3 transition-colors",
-        active ? "border-foreground" : "border-border",
+        "relative flex items-center gap-3 rounded-2xl border px-3 py-3 transition-all duration-200",
+        active
+          ? "border-ring/45 bg-card shadow-soft-sm"
+          : "border-border/50 bg-card/60 shadow-inset-soft",
       )}
     >
       <span

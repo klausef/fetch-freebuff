@@ -190,7 +190,7 @@ export function Auth({ redirectAfterAuth = "/app" }: AuthProps = {}) {
       <main className="flex flex-1 items-center justify-center px-4 py-10">
         <div className="w-full max-w-sm">
           {needsOwnerPassword ? (
-            <section className="mb-6 rounded-[1.75rem] border border-primary/20 bg-primary/[0.06] p-5 shadow-soft-sm backdrop-blur-sm">
+            <section className="soft-panel mb-6 rounded-[1.75rem] border-primary/25 bg-primary/[0.05] p-5 shadow-soft-sm">
               <div className="mb-3 flex items-center gap-2 text-primary">
                 <ShieldCheck className="size-4" />
                 <span className="text-xs font-semibold tracking-wide uppercase">
@@ -240,7 +240,7 @@ export function Auth({ redirectAfterAuth = "/app" }: AuthProps = {}) {
           ) : null}
 
           {step === "signIn" ? (
-            <section className="soft-sheen rounded-[1.75rem] border border-border/55 bg-card/95 p-5 shadow-soft-lg sm:p-6 dark:border-white/[0.07] dark:bg-card/90">
+            <section className="soft-panel rounded-[1.75rem] p-5 shadow-soft-lg sm:p-6">
               <h1 className="text-2xl font-bold tracking-tight">
                 {t("auth", "title")}
               </h1>
@@ -383,7 +383,7 @@ export function Auth({ redirectAfterAuth = "/app" }: AuthProps = {}) {
               </p>
             </section>
           ) : (
-            <section className="soft-sheen rounded-[1.75rem] border border-border/55 bg-card/95 p-5 shadow-soft-lg sm:p-6 dark:border-white/[0.07] dark:bg-card/90">
+            <section className="soft-panel rounded-[1.75rem] p-5 shadow-soft-lg sm:p-6">
               <h1 className="text-xl font-bold tracking-tight">
                 {t("auth", "checkEmail")}
               </h1>

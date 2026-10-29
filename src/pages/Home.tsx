@@ -48,7 +48,7 @@ const SERVICES: {
     label: "Ride",
     hint: "Across town",
     icon: MapPin,
-    tile: "bg-primary text-white",
+    tile: "bg-primary text-white shadow-[0_10px_18px_-10px_rgb(168_67_47/0.75)]",
   },
   {
     type: "pabili",
@@ -57,14 +57,14 @@ const SERVICES: {
     icon: ShoppingBasket,
     // Gold is the one tile a white glyph would vanish into, so it takes the
     // ink from the crest's black rim instead.
-    tile: "bg-fetch-gold text-fetch-ink",
+    tile: "bg-fetch-gold text-fetch-ink shadow-[0_10px_18px_-10px_rgb(232_182_76/0.8)]",
   },
   {
     type: "padala",
     label: "Pasugo",
     hint: "Send a parcel",
     icon: Package,
-    tile: "bg-fetch-royal text-white",
+    tile: "bg-fetch-royal text-white shadow-[0_10px_18px_-10px_rgb(46_58_140/0.7)]",
   },
 ];
 
@@ -204,11 +204,11 @@ export default function Home() {
             <Link
               key={service.type}
               to={bookUrl(service.type, picked, pickup)}
-              className="soft-sheen rounded-[1.5rem] border border-border/55 bg-card p-3 shadow-soft-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring dark:border-white/[0.07] dark:bg-card/85"
+              className="soft-panel rounded-[1.5rem] p-3 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring active:translate-y-0 active:shadow-inset-soft"
             >
               <span
                 className={cn(
-                  "flex size-11 items-center justify-center rounded-2xl shadow-soft-sm",
+                  "flex size-11 items-center justify-center rounded-2xl",
                   service.tile,
                 )}
               >
