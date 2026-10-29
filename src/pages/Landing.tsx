@@ -167,7 +167,7 @@ export default function Landing() {
   }, [api]);
 
   return (
-    <div className="safe-bottom flex min-h-dvh flex-col bg-background bg-[radial-gradient(120%_80%_at_15%_0%,var(--neu-highlight),transparent_60%)] text-foreground">
+    <div className="safe-bottom flex min-h-dvh flex-col bg-background text-foreground">
       {/* Brand + language */}
       <header className="safe-top">
         <div className="mx-auto flex w-full max-w-md items-start justify-between px-5 pt-5 sm:px-6">
@@ -195,22 +195,19 @@ export default function Landing() {
                 key={slide.titleKey}
                 className="flex flex-col items-center text-center"
               >
-                {/* The illustration sits in a pressed well: the artwork is a
-                    screen set into the soft surface, not a card lying on it. */}
-                <div className="neu-inset w-full rounded-[2rem] p-2 sm:p-2.5">
-                  <div className="relative aspect-video w-full overflow-hidden rounded-[1.5rem] bg-fetch-royal">
-                    {slide.image ? (
-                      <img
-                        src={slide.image}
-                        alt=""
-                        className="absolute inset-0 size-full object-cover"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    ) : (
-                      <WelcomeScene />
-                    )}
-                  </div>
+                {/* The illustration window. */}
+                <div className="relative aspect-video w-full overflow-hidden rounded-3xl bg-fetch-royal">
+                  {slide.image ? (
+                    <img
+                      src={slide.image}
+                      alt=""
+                      className="absolute inset-0 size-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  ) : (
+                    <WelcomeScene />
+                  )}
                 </div>
                 {/* One heading per page, not one per slide. Every slide is in
                     the DOM at once, so four h1s would announce the same page
@@ -243,13 +240,10 @@ export default function Landing() {
               aria-current={current === index}
               onClick={() => api?.scrollTo(index)}
               className={cn(
-                "h-2.5 rounded-full transition-all duration-300",
-                // The current slide is a small extruded pill; the others are
-                // dimples pressed into the page, so the row itself is a piece
-                // of the surface rather than three floating dots.
+                "h-2 rounded-full transition-all duration-300",
                 current === index
-                  ? "w-8 bg-fetch-brick shadow-[3px_3px_7px_var(--neu-dark),-3px_-3px_7px_var(--neu-light)]"
-                  : "w-2.5 bg-[var(--neu-shade)] shadow-[inset_1.5px_1.5px_3px_var(--neu-dark),inset_-1.5px_-1.5px_3px_var(--neu-light)] hover:bg-[var(--neu-highlight)]",
+                  ? "w-8 bg-fetch-brick"
+                  : "w-2 bg-fetch-brick/25 hover:bg-fetch-brick/50",
               )}
             />
           ))}
@@ -275,14 +269,14 @@ export default function Landing() {
               users in and creates new accounts from the same form. */}
           <Button
             asChild
-            className="neu-extrude h-12 w-full rounded-2xl bg-fetch-brick text-base font-bold text-white hover:brightness-[1.06] sm:h-12"
+            className="h-12 w-full rounded-full bg-fetch-brick text-base font-bold text-white hover:bg-fetch-brick/90 sm:h-12"
           >
             <Link to="/auth">{t("landing", "cta")}</Link>
           </Button>
           <Button
             asChild
             variant="outline"
-            className="h-12 w-full rounded-2xl text-base font-bold text-fetch-brick sm:h-12"
+            className="h-12 w-full rounded-full border-fetch-brick bg-background text-base font-bold text-fetch-brick hover:bg-fetch-brick/5 hover:text-fetch-brick sm:h-12"
           >
             <Link to="/auth">{t("landing", "ctaSignUp")}</Link>
           </Button>

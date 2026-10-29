@@ -71,102 +71,78 @@
   --brand-royal: #2e3a8c;
 }
 
-/*
-  CHANGE VALUES FOR THEME
-
-  The interface is neumorphic: every surface is the SAME warm putty colour as
-  the page, and depth comes only from a pair of opposing shadows — a white
-  highlight from the top-left, a darker shade toward the bottom-right. That is
-  why `--card` and `--background` match: a card that painted itself a different
-  colour would hide the light that makes it look extruded.
-
-  The crest still supplies the accent. It is desaturated into a clay red for
-  the primary action so it reads as pressed plastic rather than a flat brick.
-*/
+/* CHANGE VALUES FOR THEME */
 :root {
-  --radius: 1rem;
-  --background: #e9e3db;
-  --foreground: #3a322d;
-  --card: #e9e3db;
-  --card-foreground: #3a322d;
-  --popover: #f1ece5;
-  --popover-foreground: #3a322d;
-  --primary: #ad3327;
-  --primary-foreground: #fff8f4;
-  /* "Pressed" tone: where a bout of the page has been pushed in. */
-  --secondary: #ded5c9;
-  --secondary-foreground: #3a322d;
-  --muted: #e0d8cd;
-  --muted-foreground: #6f635b;
-  --accent: #e0d6ca;
-  --accent-foreground: #3a322d;
-  --destructive: #b32d24;
-  --border: #dcd2c6;
-  --input: #d8cec1;
-  --ring: #ad3327;
-  --chart-1: #ad3327;
-  --chart-2: #d99b17;
-  --chart-3: var(--brand-royal);
-  --chart-4: #3a322d;
+  --radius: 0.625rem;
+  --background: #ffffff;
+  --foreground: var(--brand-ink);
+  --card: #ffffff;
+  --card-foreground: var(--brand-ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--brand-ink);
+  --primary: var(--brand-red);
+  --primary-foreground: #ffffff;
+  /* Neutrals are warm-tinted rather than pure gray: the crest is a red field
+     with a gold ring, so even the "empty" surfaces carry a trace of the red
+     instead of reading as a neutral template. */
+  --secondary: #fdeceb;
+  --secondary-foreground: var(--brand-ink);
+  --muted: #f7f1f0;
+  --muted-foreground: #6d6664;
+  --accent: var(--brand-gold);
+  --accent-foreground: var(--brand-ink);
+  --destructive: #c81e1e;
+  --border: #ebdcd9;
+  --input: #ebdcd9;
+  --ring: var(--brand-red);
+  --chart-1: var(--brand-red);
+  --chart-2: var(--brand-gold);
+  --chart-3: var(--brand-blue);
+  --chart-4: var(--brand-ink);
   --chart-5: #2f8f83;
-  --sidebar: #e9e3db;
-  --sidebar-foreground: #3a322d;
-  --sidebar-primary: #ad3327;
-  --sidebar-primary-foreground: #fff8f4;
-  --sidebar-accent: #ded5c9;
-  --sidebar-accent-foreground: #3a322d;
-  --sidebar-border: #dcd2c6;
-  --sidebar-ring: #ad3327;
-
-  /* The three tones every .neu-* shape is built from. `base` is the page
-     colour, `light`/`dark` are the two shadow colours, and `highlight`/`shade`
-     are the faint gradient that keeps a large pad from reading as flat paper. */
-  --neu-base: #e9e3db;
-  --neu-highlight: #f4efe9;
-  --neu-shade: #ded7cd;
-  --neu-light: #ffffff;
-  --neu-dark: #c8bcae;
+  --sidebar: #ffffff;
+  --sidebar-foreground: var(--brand-ink);
+  --sidebar-primary: var(--brand-red);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #fdeceb;
+  --sidebar-accent-foreground: var(--brand-ink);
+  --sidebar-border: #ebdcd9;
+  --sidebar-ring: var(--brand-red);
 }
 
 .dark {
-  --background: #26242a;
-  --foreground: #ece6de;
-  --card: #26242a;
-  --card-foreground: #ece6de;
-  --popover: #2d2b32;
-  --popover-foreground: #ece6de;
+  --background: #0f0f12;
+  --foreground: #f7f5f2;
+  --card: #17171c;
+  --card-foreground: #f7f5f2;
+  --popover: #17171c;
+  --popover-foreground: #f7f5f2;
   /* Lifted off the brand red so it holds up against a near-black field. */
-  --primary: #e0574a;
-  --primary-foreground: #1a1416;
-  --secondary: #322f37;
-  --secondary-foreground: #ece6de;
-  --muted: #302d35;
-  --muted-foreground: #a8a09a;
-  --accent: #332f38;
-  --accent-foreground: #ece6de;
-  --destructive: #e0645a;
-  --border: #3a3640;
-  --input: #3a3640;
-  --ring: #e0574a;
-  --chart-1: #e0574a;
+  --primary: #ff4438;
+  --primary-foreground: #ffffff;
+  --secondary: #251b1c;
+  --secondary-foreground: #f7f5f2;
+  --muted: #241b1d;
+  --muted-foreground: #a09a99;
+  --accent: var(--brand-gold);
+  --accent-foreground: var(--brand-ink);
+  --destructive: #ff6b6b;
+  --border: #ffffff1a;
+  --input: #ffffff26;
+  --ring: #ff4438;
+  --chart-1: #ff4438;
   --chart-2: var(--brand-gold);
-  --chart-3: #7b8cf0;
-  --chart-4: #ece6de;
+  --chart-3: #5b7bff;
+  --chart-4: #f7f5f2;
   --chart-5: #4fb3a5;
-  --sidebar: #26242a;
-  --sidebar-foreground: #ece6de;
-  --sidebar-primary: #e0574a;
-  --sidebar-primary-foreground: #1a1416;
-  --sidebar-accent: #322f37;
-  --sidebar-accent-foreground: #ece6de;
-  --sidebar-border: #3a3640;
-  --sidebar-ring: #e0574a;
-
-  --neu-base: #26242a;
-  --neu-highlight: #302d34;
-  --neu-shade: #1f1d23;
-  --neu-light: #322f37;
-  --neu-dark: #17151a;
+  --sidebar: #17171c;
+  --sidebar-foreground: #f7f5f2;
+  --sidebar-primary: #ff4438;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #251b1c;
+  --sidebar-accent-foreground: #f7f5f2;
+  --sidebar-border: #ffffff1a;
+  --sidebar-ring: #ff4438;
 }
 
 @layer base {
@@ -223,85 +199,5 @@
      there is no width at which the bar can sit flush with the viewport bottom. */
   .above-tabs {
     bottom: calc(3.5rem + env(safe-area-inset-bottom));
-  }
-
-  /*
-    Neumorphic surfaces.
-
-    A raised element is painted the page's own colour and lit from the
-    top-left: a white-ish glow on one side, a darker shade on the other. An
-    inset element is the same two shadows flipped inward, so it reads as a
-    hollow pressed into the surface rather than a box sitting on it.
-
-    All of them are classes in the components layer, so any Tailwind utility on
-    the same element still wins — a `bg-primary` button keeps its red face and
-    only borrows the shadow.
-  */
-  .neu-raised {
-    background-color: var(--neu-base);
-    background-image: linear-gradient(
-      145deg,
-      var(--neu-highlight),
-      var(--neu-shade)
-    );
-    box-shadow:
-      7px 7px 16px var(--neu-dark),
-      -7px -7px 16px var(--neu-light);
-  }
-  .neu-raised-sm {
-    background-color: var(--neu-base);
-    background-image: linear-gradient(
-      145deg,
-      var(--neu-highlight),
-      var(--neu-shade)
-    );
-    box-shadow:
-      4px 4px 9px var(--neu-dark),
-      -4px -4px 9px var(--neu-light);
-  }
-  .neu-inset {
-    background-color: var(--neu-base);
-    background-image: linear-gradient(
-      145deg,
-      var(--neu-shade),
-      var(--neu-highlight)
-    );
-    box-shadow:
-      inset 5px 5px 10px var(--neu-dark),
-      inset -5px -5px 10px var(--neu-light);
-  }
-  .neu-inset-sm {
-    background-color: var(--neu-base);
-    box-shadow:
-      inset 3px 3px 6px var(--neu-dark),
-      inset -3px -3px 6px var(--neu-light);
-  }
-  /* Shadows only, for a coloured pad whose face comes from `bg-*`. */
-  .neu-extrude {
-    box-shadow:
-      5px 5px 12px var(--neu-dark),
-      -5px -5px 12px var(--neu-light);
-  }
-  .neu-extrude:active,
-  .neu-raised-sm:active,
-  .neu-raised:active {
-    box-shadow:
-      inset 4px 4px 9px var(--neu-dark),
-      inset -4px -4px 9px var(--neu-light);
-  }
-
-  /*
-    Panels.
-
-    Most screens build their sections by hand (`bg-card` plus a hairline
-    border) rather than with <Card>, so any element painted the card colour
-    gets the same soft lift. It is a components-layer rule, so a `shadow-*`
-    utility on the element still wins — a floating map pill keeps its own
-    smaller shadow.
-  */
-  .bg-card {
-    box-shadow:
-      5px 5px 12px var(--neu-dark),
-      -5px -5px 12px var(--neu-light);
   }
 }
