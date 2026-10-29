@@ -68,7 +68,7 @@ function DialogContent({
         // would either lose the inset or lose the design padding, depending on
         // stylesheet order. calc adds them, so both survive.
         className={cn(
-          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 grid w-full grid-rows-[auto_1fr] content-start gap-4 overflow-y-auto px-5 pt-[calc(1.25rem+env(safe-area-inset-top))] pb-[calc(1.25rem+env(safe-area-inset-bottom))] outline-none sm:inset-auto sm:top-[50%] sm:left-[50%] sm:max-h-[calc(100dvh-4rem)] sm:max-w-[calc(100%-2rem)] sm:translate-x-[-50%] sm:translate-y-[-50%] sm:content-normal sm:rounded-3xl sm:p-6 sm:shadow-[0_2px_6px_var(--soft-contact),0_26px_60px_-28px_var(--soft-dark)] sm:duration-200 lg:max-w-lg",
+          "bg-background data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 grid w-full grid-rows-[auto_1fr] content-start gap-4 overflow-y-auto px-5 pt-[calc(1.25rem+env(safe-area-inset-top))] pb-[calc(1.25rem+env(safe-area-inset-bottom))] outline-none sm:inset-auto sm:top-[50%] sm:left-[50%] sm:max-h-[calc(100dvh-4rem)] sm:max-w-[calc(100%-2rem)] sm:translate-x-[-50%] sm:translate-y-[-50%] sm:content-normal sm:rounded-3xl sm:p-6 sm:shadow-[0_26px_60px_-28px_var(--neu-dark),0_-1px_0_0_var(--neu-light)] sm:duration-200 lg:max-w-lg",
           className
         )}
         {...props}

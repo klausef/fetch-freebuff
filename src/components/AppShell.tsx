@@ -31,7 +31,7 @@ function NavItem({ to, children }: { to: string; children: ReactNode }) {
           // happen.
           "flex min-h-11 items-center rounded-full px-3 text-sm tracking-tight transition-colors",
           isActive
-            ? "soft-recessed-sm font-medium text-primary"
+            ? "neu-inset-sm font-medium text-primary"
             : "text-muted-foreground hover:text-foreground",
         )
       }
@@ -70,10 +70,10 @@ export function AppShell({
   const t = useT();
 
   return (
-    <div className="flex min-h-dvh flex-col bg-background bg-[radial-gradient(120%_80%_at_15%_0%,var(--soft-highlight),transparent_60%)] text-foreground">
+    <div className="flex min-h-dvh flex-col bg-background bg-[radial-gradient(120%_80%_at_15%_0%,var(--neu-highlight),transparent_60%)] text-foreground">
       {/* The bar is the same putty as the page and separates by cast shadow,
           not by a ruled line — a 1px border would flatten the whole surface. */}
-      <header className="safe-top sticky top-0 z-30 bg-background/90 shadow-[0_1px_2px_var(--soft-contact),0_14px_30px_-22px_var(--soft-dark)] backdrop-blur-md">
+      <header className="safe-top sticky top-0 z-30 bg-background/90 shadow-[0_14px_30px_-26px_var(--neu-dark)] backdrop-blur-md">
         <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:gap-4 sm:px-6">
           <div className="flex items-center gap-4 sm:gap-5">
             <NavLink to="/" className="rounded-md" aria-label={t("nav", "home")}>
@@ -97,7 +97,7 @@ export function AppShell({
                 <button
                   type="button"
                   aria-label="Notifications"
-                  className="soft-raised-sm relative flex size-11 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground"
+                  className="neu-raised-sm relative flex size-11 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground"
                 >
                   <Bell className="size-5" />
                   {(unread ?? 0) > 0 && (
